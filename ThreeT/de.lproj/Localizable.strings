@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  ThreeT
+
+  Created by Martin Albrecht on 25.04.20.
+  Copyright © 2020 Martin Albrecht. All rights reserved.
+*/
+"End game" = "Beenden";
+"Play alone" = "Spiel allein";
+"or" = "oder";
+"With a friend" = "Gegen einem Freund";
+"Are you sure you want to end the game?" = "Spiel wirklich beenden?";
+"Your turn" = "Dein Zug";
+"Enemy's turn" = "Gegner am Zug";
+"Player %d" = "Spieler %d";
+"Game Over" = "Spiel beendet";
+"Play again" = "Nochmal spielen";
+"Exit" = "Beenden";
+"Draw, no winner." = "Unentschieden";
+"Winner: Player %d" = "Gewinner: Spieler %d";
+"You won!" = "Gewonnen!";
+"You lost!" = "Verloren!";
