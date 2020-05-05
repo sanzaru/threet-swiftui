@@ -31,11 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = UIHostingController(rootView: contentView)
             
             // Set window size for catalyst
-            if UIDevice.current.systemName.contains("Mac") {
-                let size = CGSize(width: 600, height: 800)
-                window.windowScene?.sizeRestrictions?.minimumSize = size
-                window.windowScene?.sizeRestrictions?.maximumSize = size
-            }
+            #if targetEnvironment(macCatalyst)
+                let minSize = CGSize(width: 480, height: 640)
+                window.windowScene?.sizeRestrictions?.minimumSize = minSize
+            #endif
             
             self.window = window
             window.makeKeyAndVisible()

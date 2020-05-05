@@ -82,8 +82,6 @@ class Game: ObservableObject {
                 if self.mode == .demo {
                     let cell = enemy.getRandomFreeCell(cells: self.cells)
                     
-                    print("Taking cell: \(cell)")
-                    
                     setCellValue(index: cell)
                     sleep(5)
                 }

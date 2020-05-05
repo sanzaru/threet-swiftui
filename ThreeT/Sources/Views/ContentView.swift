@@ -42,10 +42,10 @@ struct ContentView: View {
                         alignment: .top
                     )
                     .overlay(
-                        Text("End game")
+                        Text("labelEndGame")
                             .gameFont(color: GameGlobals.colorRed)
                             .alert(isPresented: $showEndConfirm) {
-                                Alert(title: Text("Are you sure you want to end the game?"), primaryButton: .destructive(Text("Okay")) {
+                                Alert(title: Text("labelExit"), primaryButton: .destructive(Text("Okay")) {
                                     self.game.reset()
                                 }, secondaryButton: .cancel())
                             }
@@ -83,9 +83,9 @@ struct ContentView: View {
     fileprivate func nextPlayerLabel() -> String {
         if game.state == .running {
             if game.mode == .single {
-                return game.nextPlayer == .player1 ? "Your turn" : "Enemy's turn"
+                return game.nextPlayer == .player1 ? "labelYourTurn" : "labelEnemyTurn"
             } else {
-                return String(format: "Player %d".localizedFormat(), arguments: game.nextPlayer == .player1 ? [1] : [2])
+                return String(format: "labelCurrentPlayer".localizedFormat(), arguments: game.nextPlayer == .player1 ? [1] : [2])
             }
         }
         

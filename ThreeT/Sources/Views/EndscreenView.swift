@@ -22,7 +22,7 @@ struct EndscreenView: View {
                         .font(.custom(GameGlobals.gameFont, size: GameFontSize.medium.rawValue))
                         .bold()
                     
-                    Text("Game Over")
+                    Text("labelGameOver")
                         .foregroundColor(.white)
                         .font(.headline)
                         .bold()
@@ -32,13 +32,13 @@ struct EndscreenView: View {
             }
             
             VStack {
-                Text("Play again")
+                Text("labelPlayAgain")
                     .gameFont(color: .green)
                     .onTapGesture {
                         self.game.restart()
                     }
                 
-                Text("Exit")
+                Text("labelExit")
                     .gameFont(color: .red)
                     .onTapGesture {
                         self.game.reset()
@@ -54,14 +54,14 @@ struct EndscreenView: View {
     
     func getPlayerLabel() -> String {
         if game.winner == nil {
-            return "Draw, no winner."
+            return "labelDraw"
         }
         
         if game.mode == .multi {
-            return String(format: "Winner: Player %d".localizedFormat(), arguments: self.game.winner == .player1 ? [1] : [2])
+            return String(format: "labelWinner".localizedFormat(), arguments: self.game.winner == .player1 ? [1] : [2])
         }
         
-        return "\(self.game.winner == .player1 ? "You won!" : "You lost!")"
+        return "\(self.game.winner == .player1 ? "labelWin" : "labelLost")"
     }
 }
 

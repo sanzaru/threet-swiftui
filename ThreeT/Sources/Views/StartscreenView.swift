@@ -17,7 +17,7 @@ struct StartscreenView: View {
     var body: some View {
         HStack {
             VStack(spacing: 15) {                
-                Text("Play alone")
+                Text("labelPlayAlone")
                     //.gameFont(fontSize: GameFontSize.big.rawValue, color: textColor)
                     .font(.system(size: GameFontSize.big.rawValue))
                     .foregroundColor(textColor)
@@ -32,14 +32,14 @@ struct StartscreenView: View {
                         }
                     }
                 
-                Text("or")
+                Text("labelOr")
                     //.font(.custom(GameGlobals.gameFont, size: GameFontSize.small.rawValue))
                     .font(.system(size: GameFontSize.small.rawValue))
                     .foregroundColor(textColor)
                     .bold()
                     .foregroundColor(textColor.opacity(0.6))
                 
-                Text("With a friend")
+                Text("labelMultiplayer")
                     //.gameFont(fontSize: GameFontSize.medium.rawValue, color: textColor)
                     .font(.system(size: GameFontSize.medium.rawValue))
                     .foregroundColor(textColor)

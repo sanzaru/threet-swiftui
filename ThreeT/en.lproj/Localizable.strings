@@ -1,1 +1,23 @@
+/*
+  Localizable.strings
+  ThreeT
+
+  Created by Martin Albrecht on 25.04.20.
+  Copyright © 2020 Martin Albrecht. All rights reserved.
+*/
+"labelEndGame" = "End game";
+"labelPlayAlone" = "Play alone";
+"labelOr" = "or";
+"labelMultiplayer" = "Against a friend";
+"labelExit" = "Are you sure you want to end the game?";
+"labelYourTurn" = "Your turn";
+"labelEnemyTurn" = "Enemy's turn";
+"labelCurrentPlayer" = "Player %d";
+"labelGameOver" = "Game over";
+"labelPlayAgain" = "Play again";
+"labelExit" = "Exit";
+"labelDraw" = "Draw, no winner";
+"labelWinner" = "Winner: Player %d";
+"labelWin" = "You won!";
+"labelLost" = "You lost!";
 
