@@ -9,7 +9,7 @@
 "labelPlayAlone" = "Play alone";
 "labelOr" = "or";
 "labelMultiplayer" = "Against a friend";
-"labelExit" = "Are you sure you want to end the game?";
+"labelExitConfirm" = "Are you sure you want to end the game?";
 "labelYourTurn" = "Your turn";
 "labelEnemyTurn" = "Enemy's turn";
 "labelCurrentPlayer" = "Player %d";

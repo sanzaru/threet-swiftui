@@ -9,7 +9,7 @@
 "labelPlayAlone" = "Spiel allein";
 "labelOr" = "oder";
 "labelMultiplayer" = "Gegen einen Freund";
-"labelExit" = "Spiel wirklich beenden?";
+"labelExitConfirm" = "Spiel wirklich beenden?";
 "labelYourTurn" = "Dein Zug";
 "labelEnemyTurn" = "Gegner am Zug";
 "labelCurrentPlayer" = "Spieler %d";

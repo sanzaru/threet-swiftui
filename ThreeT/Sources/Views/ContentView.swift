@@ -45,7 +45,7 @@ struct ContentView: View {
                         Text("labelEndGame")
                             .gameFont(color: GameGlobals.colorRed)
                             .alert(isPresented: $showEndConfirm) {
-                                Alert(title: Text("labelExit"), primaryButton: .destructive(Text("Okay")) {
+                                Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
                                     self.game.reset()
                                 }, secondaryButton: .cancel())
                             }

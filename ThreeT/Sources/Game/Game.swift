@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 
+
 enum GameState {
     case empty, running, paused, thinking, end
 }
@@ -20,8 +21,8 @@ enum GameMode {
 
 
 class Game: ObservableObject {
-    public let onGameEnd = PassthroughSubject<Void, Never>()
-    public let onGameStart = PassthroughSubject<Void, Never>()
+    let onGameEnd = PassthroughSubject<Void, Never>()
+    let onGameStart = PassthroughSubject<Void, Never>()
     
     @Published var mode: GameMode?
     @Published var cells: [GameCell] = []
@@ -30,8 +31,10 @@ class Game: ObservableObject {
     @Published var error: String?
     @Published var winner: GameCellState?
     
-    fileprivate let enemy: Enemy
+    private let enemy: Enemy
     
+    /// Initialize a game object
+    /// - Parameter mode: The initial game mode for the game object
     init(mode: GameMode?) {
         enemy = Enemy(state: .player2, oponnent: .player1)
         self.mode = mode
@@ -40,8 +43,10 @@ class Game: ObservableObject {
     
     // MARK: - Game control methods
     
+    /// Start a game
+    /// - Returns: self
     @discardableResult
-    func start() -> Game {
+    func start() -> some Game {
         state = .running
         
         if mode == .demo {
@@ -54,8 +59,10 @@ class Game: ObservableObject {
         return self
     }
     
+    /// Restart the game
+    /// - Returns: self
     @discardableResult
-    func restart() -> Game {
+    func restart() -> some Game {
         self.reset()
         state = .running
         
@@ -64,8 +71,10 @@ class Game: ObservableObject {
         return self
     }
     
+    /// Reset the game
+    /// - Returns: self
     @discardableResult
-    func reset() -> Game {
+    func reset() -> some Game {
         resetCells()
         error = nil
         nextPlayer = .player1
@@ -74,8 +83,10 @@ class Game: ObservableObject {
         return self
     }
     
+    /// Calculate next step in game
+    /// - Returns: self
     @discardableResult
-    func next() -> Game {
+    func next() -> some Game {
         if state == .running {
             switch nextPlayer {
             case .player1:
@@ -112,8 +123,11 @@ class Game: ObservableObject {
         return self
     }
     
+    /// End the game
+    /// - Parameter winner: Cell state defining the winner
+    /// - Returns: self
     @discardableResult
-    func end(winner: GameCellState?) -> Game? {
+    func end(winner: GameCellState?) -> some Game {
         if winner != nil {
             self.winner = nextPlayer == .player2 ? .player2 : .player1
         }
@@ -124,12 +138,20 @@ class Game: ObservableObject {
     
     // MARK: - General methods
     
+    /// Set the game mode
+    /// - Parameter mode: The mode to set
+    /// - Returns: self
     @discardableResult
-    func setGameMode(mode: GameMode) -> Game {
+    func setGameMode(mode: GameMode) -> some Game {
         self.mode = mode
         return self
     }
     
+    /// Set cell value in given row and col index
+    /// - Parameters:
+    ///   - row: The row index
+    ///   - col: The col index
+    /// - Returns: True on field set, false if field was not set
     @discardableResult
     func setCellValue(row: Int, col: Int) -> Bool {
         if state == .running || state == .thinking {
@@ -144,7 +166,11 @@ class Game: ObservableObject {
         
         return false
     }
-        
+    
+    /// Set the value inside the cell of the given cell index
+    /// The index must be a number in the range of 0...9
+    /// - Parameter index: The index number of the field to set
+    /// - Returns: True on field set, false if field was not set
     @discardableResult
     func setCellValue(index: Int) -> Bool {
         if state == .running || state == .thinking {
@@ -158,6 +184,11 @@ class Game: ObservableObject {
         return false
     }
     
+    /// Calculate the field index for given row and col. The returned number will be in range 0...9
+    /// - Parameters:
+    ///   - row: The row index
+    ///   - col: The col index
+    /// - Returns: The index number of the field
     func calculateIndex(row: Int, col: Int) -> Int {
         let index = (row * 3) + col
         return index <= 8 ? index : 0
@@ -165,6 +196,8 @@ class Game: ObservableObject {
     
     // MARK: - Private methods
     
+    /// Calculate if we have a winner
+    /// - Returns: True on winner, false on none
     fileprivate func hasWinner() -> Bool {
         // Horizontal
         cells[0].state != .empty && cells[0].state == cells[1].state && cells[1].state == cells[2].state ||
@@ -181,6 +214,7 @@ class Game: ObservableObject {
         cells[2].state != .empty && cells[2].state == cells[4].state && cells[4].state == cells[6].state
     }
     
+    /// Analyze the game for winner
     fileprivate func analyze() {
         // Check for win condition
         if hasWinner() {
@@ -200,12 +234,14 @@ class Game: ObservableObject {
         }
     }
     
+    /// Reset all cell values
     fileprivate func resetCells() {
         cells.forEach { cell in
             cell.reset()
         }        
     }
     
+    /// Initialize all cell values
     fileprivate func initCells() {
         for _ in 0...8 {
             cells.append(GameCell())
