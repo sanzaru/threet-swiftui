@@ -12,7 +12,7 @@ enum GameCellState {
     case empty, player1, player2;
 }
 
-class GameCell: ObservableObject {
+final class GameCell: ObservableObject {
     @Published var state: GameCellState
     
     init() {

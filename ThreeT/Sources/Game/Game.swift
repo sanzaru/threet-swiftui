@@ -20,7 +20,7 @@ enum GameMode {
 }
 
 
-class Game: ObservableObject {
+final class Game: ObservableObject {
     let onGameEnd = PassthroughSubject<Void, Never>()
     let onGameStart = PassthroughSubject<Void, Never>()
     
