@@ -1,9 +1,9 @@
 //
 //  GameBoardView.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 02.04.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 import SwiftUI
@@ -56,7 +56,7 @@ struct GameBoardView: View {
                 /*if self.game.mode == .multi {
                     Text("You may pass the device to your friend, now")
                         .font(.body)
-                        .foregroundColor(GameGlobals.colorGreen)
+                        .foregroundColor(Color.green)
                         .padding()
                         .opacity(self.showNotification && self.game.state == .running ? 1 : 0)
                         .animation(.easeInOut)

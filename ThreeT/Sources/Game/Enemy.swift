@@ -1,9 +1,9 @@
 //
 //  Enemy.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 31.03.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 final class Enemy {

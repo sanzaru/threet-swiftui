@@ -1,9 +1,9 @@
 //
 //  Localization.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 29.04.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 import Foundation

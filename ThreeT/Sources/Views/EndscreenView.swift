@@ -1,9 +1,9 @@
 //
 //  EndscreenView.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 02.04.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 import SwiftUI
@@ -19,7 +19,7 @@ struct EndscreenView: View {
                 VStack(spacing: 10) {
                     Text(getPlayerLabel().localizedFormat())
                         .foregroundColor(.white)
-                        .font(.custom(GameGlobals.gameFont, size: GameFontSize.medium.rawValue))
+                        .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.medium.rawValue))
                         .bold()
                     
                     Text("labelGameOver")
@@ -49,7 +49,7 @@ struct EndscreenView: View {
         .padding(.leading, 50)
         .padding(.trailing, 50)
         .padding([.top, .bottom])
-        .background(GameGlobals.colorDarkBlue.opacity(0.95))
+        .background(Color.darkBlue.opacity(0.95))
     }
     
     func getPlayerLabel() -> String {

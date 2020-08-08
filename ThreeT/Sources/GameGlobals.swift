@@ -1,27 +1,29 @@
 //
 //  GameGlobals.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 20.04.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 import SwiftUI
 
-enum GameFontSize: CGFloat {
-    case small = 20
-    case medium = 30
-    case big = 50
-    case large = 70
+extension Color {
+    static let darkBlue = Color("ColorBlueDark")
+    static let mediumBlue = Color("ColorBlueMedium")
+    static let red = Color("ColorRed")
+    static let green = Color("ColorGreen")
 }
 
 struct GameGlobals {
-    static let colorDarkBlue = Color("ColorBlueDark")
-    static let colorMediumBlue = Color("ColorBlueMedium")
-    static let colorRed = Color("ColorRed")
-    static let colorGreen = Color("ColorGreen")
-    
     static let gameFont = "Marker Felt"
+    
+    enum fontSize: CGFloat {
+        case small = 20
+        case medium = 30
+        case big = 50
+        case large = 70
+    }
     
     static func getVersionString() -> String {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? {

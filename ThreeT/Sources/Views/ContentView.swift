@@ -1,9 +1,9 @@
 //
 //  ContentView.swift
-//  ThreeT
+//  This source file is part of the ThreeT project
 //
-//  Created by Martin Albrecht on 31.03.20.
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
+//  Licensed under Apache License v2.0
 //
 
 import SwiftUI
@@ -28,9 +28,9 @@ struct ContentView: View {
                         ZStack {
                             //if game.state == .running {
                                 Text(nextPlayerLabel().localizedFormat())
-                                    .foregroundColor(game.state == .running ? GameGlobals.colorDarkBlue : GameGlobals.colorRed)
+                                    .foregroundColor(game.state == .running ? .darkBlue : .red)
                                     //.font(.largeTitle)
-                                    .font(.custom(GameGlobals.gameFont, size: GameFontSize.big.rawValue))
+                                    .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.big.rawValue))
                                     .bold()
                                     .padding()
                             //}
@@ -43,7 +43,7 @@ struct ContentView: View {
                     )
                     .overlay(
                         Text("labelEndGame")
-                            .gameFont(color: GameGlobals.colorRed)
+                            .gameFont(color: .red)
                             .alert(isPresented: $showEndConfirm) {
                                 Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
                                     self.game.reset()
@@ -67,15 +67,15 @@ struct ContentView: View {
                 }
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            //.navigationBarTitle("\(self.nextPlayerLabel())", displayMode: .inline)
-//            .navigationBarItems(
-//                trailing:
-//                    HStack {
-//                        NavigationLink(destination: SettingsView().environmentObject(settings)) {
-//                            Image(systemName: "gear")
-//                        }
-//                    }
-//                )
+            /*.navigationBarTitle("")
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        NavigationLink(destination: SettingsView().environmentObject(settings)) {
+                            Image(systemName: "gear")
+                        }
+                    }
+                )*/
         //}
         //.navigationViewStyle(StackNavigationViewStyle())
     }

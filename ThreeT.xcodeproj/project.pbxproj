@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6815794724DF03700046DAE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6815794624DDEC7C0046DAE1 /* README.md */; };
 		684A1D0924375B510060B779 /* GameFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0824375B510060B779 /* GameFont.swift */; };
 		684A1D0B243765BD0060B779 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 684A1D0A243765BD0060B779 /* LICENSE */; };
 		684A1D0D243768A30060B779 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0C243768A30060B779 /* SettingsView.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6815794624DDEC7C0046DAE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		684A1D0824375B510060B779 /* GameFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFont.swift; sourceTree = "<group>"; };
 		684A1D0A243765BD0060B779 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		684A1D0C243768A30060B779 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		68765DA42432BE80004F84E9 = {
 			isa = PBXGroup;
 			children = (
+				6815794624DDEC7C0046DAE1 /* README.md */,
 				684A1D0A243765BD0060B779 /* LICENSE */,
 				68765DAF2432BE80004F84E9 /* ThreeT */,
 				68765DAE2432BE80004F84E9 /* Products */,
@@ -208,6 +211,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6815794724DF03700046DAE1 /* README.md in Resources */,
 				68A70E1C2454B8A8001512C8 /* Localizable.strings in Resources */,
 				68765DBD2432BE84004F84E9 /* LaunchScreen.storyboard in Resources */,
 				68765DBA2432BE84004F84E9 /* Preview Assets.xcassets in Resources */,
