@@ -11,8 +11,8 @@ import SwiftUI
 extension Color {
     static let darkBlue = Color("ColorBlueDark")
     static let mediumBlue = Color("ColorBlueMedium")
-    static let red = Color("ColorRed")
-    static let green = Color("ColorGreen")
+    static let gameRed = Color("ColorRed")
+    static let gameGreen = Color("ColorGreen")
 }
 
 struct GameGlobals {

@@ -12,7 +12,7 @@ struct GameCellView: View {
     @ObservedObject var cell: GameCell
     
     private let cornerRadius: CGFloat = 10
-    private let color: [Color]  = [.darkBlue, .red]
+    private let color: [Color]  = [.darkBlue, .gameRed]
     
     var body: some View {
         GeometryReader { geometry in

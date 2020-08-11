@@ -28,7 +28,7 @@ struct ContentView: View {
                         ZStack {
                             //if game.state == .running {
                                 Text(nextPlayerLabel().localizedFormat())
-                                    .foregroundColor(game.state == .running ? .darkBlue : .red)
+                                    .foregroundColor(game.state == .running ? .darkBlue : .gameRed)
                                     //.font(.largeTitle)
                                     .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.big.rawValue))
                                     .bold()
@@ -43,7 +43,7 @@ struct ContentView: View {
                     )
                     .overlay(
                         Text("labelEndGame")
-                            .gameFont(color: .red)
+                            .gameFont(color: .gameRed)
                             .alert(isPresented: $showEndConfirm) {
                                 Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
                                     self.game.reset()
