@@ -20,7 +20,7 @@
 "labelWinner" = "Winner: Player %d";
 "labelWin" = "You won!";
 "labelLost" = "You lost!";
-"labelDone" = "Done"
+"labelDone" = "Done";
 
 // Settings
 "labelSettings" = "Settings";
