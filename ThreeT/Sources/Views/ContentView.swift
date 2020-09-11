@@ -12,75 +12,10 @@ struct ContentView: View {
     @EnvironmentObject var settings: GameSettings
     @ObservedObject var game: Game = Game(mode: nil)
     
-    @State fileprivate var showEndConfirm: Bool = false
+    @State private var showEndConfirm: Bool = false
+    @State private var showSettings: Bool = false
     
-    var body: some View {
-        //NavigationView {
-            VStack {
-                ZStack {
-                    VStack {
-                        Spacer()
-                        GameBoardView(game: game)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        Spacer()
-                    }
-                    .overlay(
-                        ZStack {
-                            //if game.state == .running {
-                                Text(nextPlayerLabel().localizedFormat())
-                                    .foregroundColor(game.state == .running ? .darkBlue : .gameRed)
-                                    //.font(.largeTitle)
-                                    .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.big.rawValue))
-                                    .bold()
-                                    .padding()
-                            //}
-                            
-                            ErrorView(message: self.game.error ?? "")
-                                .opacity(self.game.error != nil ? 1 : 0)
-                        },
-                        
-                        alignment: .top
-                    )
-                    .overlay(
-                        Text("labelEndGame")
-                            .gameFont(color: .gameRed)
-                            .alert(isPresented: $showEndConfirm) {
-                                Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
-                                    self.game.reset()
-                                }, secondaryButton: .cancel())
-                            }
-                            .onTapGesture(perform: { self.showEndConfirm.toggle() })
-                            .padding()
-                            .opacity(game.state == .running ? 1 : 0)
-                            .animation(.spring()),
-                        
-                        alignment: .bottom
-                    )
-                    
-                    if game.state == .empty {
-                        StartscreenView(game: game)
-                    }
-                    
-                    if game.state == .end {
-                        EndscreenView(game: game)
-                    }
-                }
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-            /*.navigationBarTitle("")
-            .navigationBarItems(
-                trailing:
-                    HStack {
-                        NavigationLink(destination: SettingsView().environmentObject(settings)) {
-                            Image(systemName: "gear")
-                        }
-                    }
-                )*/
-        //}
-        //.navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    fileprivate func nextPlayerLabel() -> String {
+    private var nextPlayerLabel: String {
         if game.state == .running {
             if game.mode == .single {
                 return game.nextPlayer == .player1 ? "labelYourTurn" : "labelEnemyTurn"
@@ -89,13 +24,105 @@ struct ContentView: View {
             }
         }
         
-        return "ThreeT"
+        return GameGlobals.appTitle
+    }
+    
+    var body: some View {
+        ZStack {
+            // Game board
+            VStack {
+                Spacer()
+                GameBoardView(game: game)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .opacity(game.state == .running ? 1 : 0.6)
+                Spacer()
+            }
+                
+            .overlay(
+                ZStack {
+                    if game.state == .running {
+                        Text(nextPlayerLabel.localizedFormat())
+                            .foregroundColor(.darkBlue)
+                            .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.medium.rawValue))
+                            .bold()
+                            .padding()
+                    }
+                    
+                    ErrorView(message: self.game.error ?? "")
+                        .opacity(self.game.error != nil ? 1 : 0)
+                }
+                
+                ,alignment: .top
+            )
+                
+            .overlay(
+                Text("labelEndGame")
+                    .gameFont(color: .gameRed)
+                    .alert(isPresented: $showEndConfirm) {
+                        Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
+                            self.game.reset()
+                        }, secondaryButton: .cancel())
+                    }
+                    .onTapGesture(perform: { self.showEndConfirm.toggle() })
+                    .padding()
+                    .opacity(game.state == .running ? 1 : 0)
+                    .animation(.spring())
+                
+                ,alignment: .bottom
+            )
+            
+            // Settings menu and sheet
+            .overlay(
+                HStack {
+                    Button(
+                        action: { self.showSettings.toggle() },
+                        label: {
+                            Image(systemName: "gear")
+                                .font(.system(size: 25))
+                                .foregroundColor(.darkBlue)
+                        }
+                    )
+                }
+                .opacity(game.state == .running || self.game.error != nil ? 0 : 1)
+                .padding([.horizontal, .top])
+                
+                ,alignment: .topTrailing
+            )
+            .sheet(
+                isPresented: $showSettings,
+                content: { SettingsView().environmentObject(self.settings) }
+            )
+            
+            // Game menu
+            if game.state == .empty {
+                VStack {
+                    Text(GameGlobals.appTitle)
+                        .foregroundColor(.gameRed)
+                        .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.large.rawValue))
+                        .bold()
+                        .padding([.horizontal, .bottom])
+                        .shadow(color: Color.gameRed.opacity(0.3), radius: 2, x: 5, y: 5)
+                        .rotationEffect(Angle(degrees: -6))
+                    
+                    StartscreenView(game: game)
+                }
+            }
+            
+            // End game menu
+            if game.state == .end {
+                EndscreenView(game: game)
+            }
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var langs = ["en", "de"]
+    //@State static var langs = ["de"]
+    
     static var previews: some View {
-        ForEach(["en", "de"], id: \.self) { id in
+        ForEach(langs, id: \.self) { id in
             ContentView()
                 .environmentObject(GameSettings())
                 .environment(\.locale, .init(identifier: id))

@@ -11,13 +11,25 @@ import SwiftUI
 struct EndscreenView: View {
     @State var game: Game
     
+    private var playerLabel: String {
+        if game.winner == nil {
+            return "labelDraw"
+        }
+        
+        if game.mode == .multi {
+            return String(format: "labelWinner".localizedFormat(), arguments: self.game.winner == .player1 ? [1] : [2])
+        }
+        
+        return "\(self.game.winner == .player1 ? "labelWin" : "labelLost")"
+    }
+    
     var body: some View {
         VStack(spacing: 20) {
             HStack {
                 Spacer()
                 
                 VStack(spacing: 10) {
-                    Text(getPlayerLabel().localizedFormat())
+                    Text(playerLabel.localizedFormat())
                         .foregroundColor(.white)
                         .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.medium.rawValue))
                         .bold()
@@ -30,38 +42,25 @@ struct EndscreenView: View {
                 
                 Spacer()
             }
+            .frame(maxWidth: .infinity)
+            .padding([.top, .bottom])
+            .background(Color.darkBlue.opacity(0.95))
             
-            VStack {
+            HStack {
                 Text("labelPlayAgain")
-                    .gameFont(color: .green)
+                    .gameButton(background: .gameGreen, small: true)
                     .onTapGesture {
                         self.game.restart()
                     }
                 
                 Text("labelExit")
-                    .gameFont(color: .red)
+                    .gameButton(background: .gameRed, small: true)
                     .onTapGesture {
                         self.game.reset()
                     }
             }
-            .padding(.top, 10)
+            .padding(.top, 20)
         }
-        .padding(.leading, 50)
-        .padding(.trailing, 50)
-        .padding([.top, .bottom])
-        .background(Color.darkBlue.opacity(0.95))
-    }
-    
-    func getPlayerLabel() -> String {
-        if game.winner == nil {
-            return "labelDraw"
-        }
-        
-        if game.mode == .multi {
-            return String(format: "labelWinner".localizedFormat(), arguments: self.game.winner == .player1 ? [1] : [2])
-        }
-        
-        return "\(self.game.winner == .player1 ? "labelWin" : "labelLost")"
     }
 }
 

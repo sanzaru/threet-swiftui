@@ -8,7 +8,7 @@
 "labelEndGame" = "End game";
 "labelPlayAlone" = "Play alone";
 "labelOr" = "or";
-"labelMultiplayer" = "Against a friend";
+"labelMultiplayer" = "Versus";
 "labelExitConfirm" = "Are you sure you want to end the game?";
 "labelYourTurn" = "Your turn";
 "labelEnemyTurn" = "Enemy's turn";
@@ -20,4 +20,11 @@
 "labelWinner" = "Winner: Player %d";
 "labelWin" = "You won!";
 "labelLost" = "You lost!";
+"labelDone" = "Done"
 
+// Settings
+"labelSettings" = "Settings";
+"labelSettingsSound" = "Sound";
+"labelSettingsSoundDesc" = "Enable or disable in game sounds.";
+"labelVersion" = "Version";
+"labelSettingsMoreInfo" = "More information about the game";

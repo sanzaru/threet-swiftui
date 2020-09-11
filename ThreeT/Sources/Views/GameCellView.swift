@@ -43,7 +43,7 @@ struct GameCellView: View {
     }
 }
 
-struct GameCell_Previews: PreviewProvider {
+struct GameCellView_Previews: PreviewProvider {
     @State static var s: CGFloat = 640.0
     
     static var previews: some View {

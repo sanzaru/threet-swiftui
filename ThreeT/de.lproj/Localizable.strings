@@ -8,15 +8,23 @@
 "labelEndGame" = "Beenden";
 "labelPlayAlone" = "Spiel allein";
 "labelOr" = "oder";
-"labelMultiplayer" = "Gegen einen Freund";
+"labelMultiplayer" = "Versus";
 "labelExitConfirm" = "Spiel wirklich beenden?";
 "labelYourTurn" = "Dein Zug";
 "labelEnemyTurn" = "Gegner am Zug";
 "labelCurrentPlayer" = "Spieler %d";
 "labelGameOver" = "Spiel beendet";
-"labelPlayAgain" = "Nochmal spielen";
+"labelPlayAgain" = "Nochmal";
 "labelExit" = "Beenden";
 "labelDraw" = "Unentschieden";
 "labelWinner" = "Gewinner: Spieler %d";
 "labelWin" = "Gewonnen!";
 "labelLost" = "Verloren!";
+"labelDone" = "Fertig"
+
+// Settings
+"labelSettings" = "Einstellungen";
+"labelSettingsSound" = "Sound";
+"labelSettingsSoundDesc" = "Ein- und Ausschalten von in-game Sounds.";
+"labelVersion" = "Version";
+"labelSettingsMoreInfo" = "More information about the game";

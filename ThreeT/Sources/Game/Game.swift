@@ -15,7 +15,6 @@ final class Game: ObservableObject {
         case empty, running, paused, thinking, end
     }
 
-
     enum GameMode {
         case single, multi, network, demo
     }
