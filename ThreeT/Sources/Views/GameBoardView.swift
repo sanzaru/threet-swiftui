@@ -22,7 +22,7 @@ struct GameBoardView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            HStack {
                 VStack(spacing: self.containerSpacing) {
                     ForEach(0...2, id: \.self) {rowIndex in
                         HStack(spacing: self.containerSpacing) {
@@ -64,6 +64,7 @@ struct GameBoardView: View {
                         .animation(.easeInOut)
                 }*/
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
