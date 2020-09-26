@@ -15,13 +15,14 @@ struct GameBoardView: View {
     
     @State private var showNotification: Bool = false
     @State private var timer: Timer?
+    @State private var dropSound: AVAudioPlayer?
     
     private let notificationTimeout: TimeInterval = 3
     private let containerSpacing: CGFloat = 20
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            HStack {
                 VStack(spacing: self.containerSpacing) {
                     ForEach(0...2, id: \.self) {rowIndex in
                         HStack(spacing: self.containerSpacing) {
@@ -35,22 +36,23 @@ struct GameBoardView: View {
                                 )
                                 .animation(.linear)
                                 .onTapGesture {
-                                    self.setNotificationTimer()
-                                    
                                     if self.game.state != .thinking && self.game.setCellValue(row: rowIndex, col: colIndex) {
-                                        /*if self.settings.soundEnabled {
-                                            AudioServicesPlaySystemSound(SystemSoundID(1104))
-                                        }*/
+                                        if self.settings.soundEnabled && self.dropSound != nil {
+                                            self.dropSound?.play()
+                                        }
                                         self.game.next()
                                     }
+                                    
+                                    self.setNotificationTimer()
                                 }
                             }
                         }
                     }
                 }
+                .onAppear(perform: self.setup)
                 .onReceive(self.game.onGameStart) {
                     self.showNotification = false
-                    self.resetNotificationTimer()
+                    self.resetNotification()
                 }
                 
                 /*if self.game.mode == .multi {
@@ -62,12 +64,19 @@ struct GameBoardView: View {
                         .animation(.easeInOut)
                 }*/
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
     
-    private func resetNotificationTimer() {
-        if timer != nil {
-            timer!.invalidate()
+    private func setup() {
+        if dropSound == nil {
+            if let path = Bundle.main.path(forResource: "Sounds/Drop.m4a", ofType:nil) {
+                do {
+                    self.dropSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                } catch {
+                    dump(error)
+                }
+            }
         }
     }
     
@@ -75,10 +84,16 @@ struct GameBoardView: View {
         return geometry.size.width > geometry.size.height ? (geometry.size.height / 3) - 30 : (geometry.size.width / 3) - 30
     }
     
-    private func setNotificationTimer() {
-        self.resetNotificationTimer()
-        
+    private func resetNotification() {
         showNotification = false
+        
+        if timer != nil {
+            timer!.invalidate()
+        }
+    }
+    
+    private func setNotificationTimer() {
+        self.resetNotification()
         
         if game.mode == .multi  {
             timer = Timer.scheduledTimer(withTimeInterval: notificationTimeout, repeats: false ) { _ in

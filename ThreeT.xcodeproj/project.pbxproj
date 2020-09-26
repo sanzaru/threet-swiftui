@@ -26,6 +26,7 @@
 		68765DD6243539D6004F84E9 /* StartscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD5243539D6004F84E9 /* StartscreenView.swift */; };
 		68765DD9243546E1004F84E9 /* EndscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD8243546E1004F84E9 /* EndscreenView.swift */; };
 		68765DDB24355E11004F84E9 /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DDA24355E11004F84E9 /* GameBoardView.swift */; };
+		68924B292500318100533FD5 /* Sounds in Resources */ = {isa = PBXBuildFile; fileRef = 68924B282500318000533FD5 /* Sounds */; };
 		68A70E17244E2974001512C8 /* GameGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E16244E2974001512C8 /* GameGlobals.swift */; };
 		68A70E192452F63B001512C8 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E182452F63A001512C8 /* GameSettings.swift */; };
 		68A70E1C2454B8A8001512C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A70E1E2454B8A8001512C8 /* Localizable.strings */; };
@@ -54,6 +55,7 @@
 		68765DD724353E6D004F84E9 /* ThreeT.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ThreeT.entitlements; sourceTree = "<group>"; };
 		68765DD8243546E1004F84E9 /* EndscreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndscreenView.swift; sourceTree = "<group>"; };
 		68765DDA24355E11004F84E9 /* GameBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
+		68924B282500318000533FD5 /* Sounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sounds; sourceTree = "<group>"; };
 		68A70E16244E2974001512C8 /* GameGlobals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameGlobals.swift; sourceTree = "<group>"; };
 		68A70E182452F63A001512C8 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		68A70E1D2454B8A8001512C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		68765DAF2432BE80004F84E9 /* ThreeT */ = {
 			isa = PBXGroup;
 			children = (
+				68924B282500318000533FD5 /* Sounds */,
 				68765DC8243396D2004F84E9 /* Sources */,
 				68765DB62432BE84004F84E9 /* Assets.xcassets */,
 				68765DBB2432BE84004F84E9 /* LaunchScreen.storyboard */,
@@ -121,6 +124,7 @@
 				68765DB22432BE80004F84E9 /* SceneDelegate.swift */,
 				68A70E16244E2974001512C8 /* GameGlobals.swift */,
 				68A70E182452F63A001512C8 /* GameSettings.swift */,
+				684A1D0824375B510060B779 /* GameFont.swift */,
 				684D3E50245A03F1000BEF33 /* Localization.swift */,
 			);
 			path = Sources;
@@ -135,7 +139,6 @@
 				68765DD5243539D6004F84E9 /* StartscreenView.swift */,
 				68765DD8243546E1004F84E9 /* EndscreenView.swift */,
 				68765DDA24355E11004F84E9 /* GameBoardView.swift */,
-				684A1D0824375B510060B779 /* GameFont.swift */,
 				684A1D0C243768A30060B779 /* SettingsView.swift */,
 			);
 			path = Views;
@@ -158,7 +161,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 68765DC12432BE84004F84E9 /* Build configuration list for PBXNativeTarget "ThreeT" */;
 			buildPhases = (
-				68097AE124620012003956BB /* ShellScript */,
 				68765DA92432BE80004F84E9 /* Sources */,
 				68765DAA2432BE80004F84E9 /* Frameworks */,
 				68765DAB2432BE80004F84E9 /* Resources */,
@@ -179,7 +181,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Martin Albrecht";
 				TargetAttributes = {
 					68765DAC2432BE80004F84E9 = {
@@ -217,30 +219,11 @@
 				68765DBA2432BE84004F84E9 /* Preview Assets.xcassets in Resources */,
 				684A1D0B243765BD0060B779 /* LICENSE in Resources */,
 				68765DB72432BE84004F84E9 /* Assets.xcassets in Resources */,
+				68924B292500318100533FD5 /* Sounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		68097AE124620012003956BB /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nbranch=${1:-'master'}\nbuildNumber=$(expr $(git rev-list $branch --count) - $(git rev-list HEAD..$branch --count))\necho \"Updating build number to $buildNumber using branch '$branch'.\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nif [ -f \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\" ]; then\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info.plist\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		68765DA92432BE80004F84E9 /* Sources */ = {
@@ -317,6 +300,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -378,6 +362,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -413,7 +398,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 14;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreeT/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
@@ -423,7 +408,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.seriousmonkey.threet;
 				PRODUCT_NAME = ThreeT;
 				SUPPORTS_MACCATALYST = YES;
@@ -439,7 +424,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 14;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreeT/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
@@ -449,7 +434,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.seriousmonkey.threet;
 				PRODUCT_NAME = ThreeT;
 				SUPPORTS_MACCATALYST = YES;

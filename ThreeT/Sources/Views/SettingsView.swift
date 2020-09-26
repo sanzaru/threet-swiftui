@@ -9,19 +9,54 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var settings: GameSettings
     
     var body: some View {
-        VStack {
-            Toggle(isOn: self.$settings.soundEnabled, label: {Text("Sound")})
-                .padding()
-            
-            Spacer()
-            
-            Text(GameGlobals.getVersionString())
-                .padding()
+        NavigationView {
+            VStack {
+                Form {
+                    Section(footer: Text("labelSettingsSoundDesc")) {
+                        Toggle(isOn: self.$settings.soundEnabled, label: { Text("labelSettingsSound") })
+                    }
+                    
+                    Section {
+                        HStack {
+                            Text("labelVersion")
+                            Spacer()
+                            Text(GameGlobals.versionString())
+                        }
+                        
+                        Button(
+                            action: {
+                                if let url = URL(string: GameGlobals.urlInfo) {
+                                    UIApplication.shared.open(url)
+                                }
+                            },
+                            label: {
+                                HStack {
+                                    Text("labelSettingsMoreInfo")
+                                    Spacer()
+                                    Image(systemName: "globe")
+                                }
+                            }
+                        )
+                    }
+                }
+                
+                Spacer()
+                
+                
+            }
+            .navigationBarTitle("labelSettings", displayMode: .automatic)
+            .navigationBarItems(
+                trailing: Button(
+                    action: { self.presentationMode.wrappedValue.dismiss() },
+                    label: { Text("labelDone") }
+                )
+            )
         }
-        .navigationBarTitle("Settings", displayMode: .automatic)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

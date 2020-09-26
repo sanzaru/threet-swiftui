@@ -22,7 +22,13 @@ For now, there is no network multiplayer implemented.
 
 ## Changelog
 
+* v1.2
+    * User interface improvements
+    * Added settings view
+    * Added in-game sound
+    
 * v1.1
     * Fixed the exit dialog message
+    
 * v1.0
     * Initial release
