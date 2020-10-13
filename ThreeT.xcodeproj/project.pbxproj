@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6815794724DF03700046DAE1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 6815794624DDEC7C0046DAE1 /* README.md */; };
 		684A1D0924375B510060B779 /* GameFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0824375B510060B779 /* GameFont.swift */; };
-		684A1D0B243765BD0060B779 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 684A1D0A243765BD0060B779 /* LICENSE */; };
 		684A1D0D243768A30060B779 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0C243768A30060B779 /* SettingsView.swift */; };
 		684D3E51245A03F1000BEF33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684D3E50245A03F1000BEF33 /* Localization.swift */; };
 		68765DB12432BE80004F84E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB02432BE80004F84E9 /* AppDelegate.swift */; };
@@ -30,12 +28,43 @@
 		68A70E17244E2974001512C8 /* GameGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E16244E2974001512C8 /* GameGlobals.swift */; };
 		68A70E192452F63B001512C8 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E182452F63A001512C8 /* GameSettings.swift */; };
 		68A70E1C2454B8A8001512C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A70E1E2454B8A8001512C8 /* Localizable.strings */; };
+		68CF07FA252786AF0054808B /* Fastlane_Screenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CF07F9252786AF0054808B /* Fastlane_Screenshots.swift */; };
+		68CF0807252786DB0054808B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CF0806252786DB0054808B /* SnapshotHelper.swift */; };
+		68CF082325279A080054808B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A70E1E2454B8A8001512C8 /* Localizable.strings */; };
+		68F34F2B252D16C900D81726 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB42432BE80004F84E9 /* ContentView.swift */; };
+		68F34F2C252D16C900D81726 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0C243768A30060B779 /* SettingsView.swift */; };
+		68F34F2D252D16C900D81726 /* StartscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD5243539D6004F84E9 /* StartscreenView.swift */; };
+		68F34F2E252D16C900D81726 /* EndscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD8243546E1004F84E9 /* EndscreenView.swift */; };
+		68F34F2F252D16C900D81726 /* GameCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DC42432C92A004F84E9 /* GameCellView.swift */; };
+		68F34F30252D16C900D81726 /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DDA24355E11004F84E9 /* GameBoardView.swift */; };
+		68F34F31252D16C900D81726 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD324340CF1004F84E9 /* ErrorView.swift */; };
+		68F34F34252D16D000D81726 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DCF2433D950004F84E9 /* GameCell.swift */; };
+		68F34F35252D16D000D81726 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DCB2433D417004F84E9 /* Enemy.swift */; };
+		68F34F36252D16D000D81726 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DC6243396AB004F84E9 /* Game.swift */; };
+		68F34F39252D16D600D81726 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E182452F63A001512C8 /* GameSettings.swift */; };
+		68F34F3A252D16D600D81726 /* GameGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A70E16244E2974001512C8 /* GameGlobals.swift */; };
+		68F34F3B252D16D600D81726 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB02432BE80004F84E9 /* AppDelegate.swift */; };
+		68F34F3C252D16D600D81726 /* GameFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0824375B510060B779 /* GameFont.swift */; };
+		68F34F3D252D16D600D81726 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684D3E50245A03F1000BEF33 /* Localization.swift */; };
+		68F34F3E252D16D600D81726 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB22432BE80004F84E9 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		68CF07FC252786AF0054808B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 68765DA52432BE80004F84E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68765DAC2432BE80004F84E9;
+			remoteInfo = ThreeT;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		6815794624DDEC7C0046DAE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		684957E925277B990047DE47 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		684957EA25277B990047DE47 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		684957EB25277B990047DE47 /* Snapfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
+		684957EC25277B9A0047DE47 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		684A1D0824375B510060B779 /* GameFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFont.swift; sourceTree = "<group>"; };
-		684A1D0A243765BD0060B779 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		684A1D0C243768A30060B779 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		684D3E50245A03F1000BEF33 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		68765DAD2432BE80004F84E9 /* ThreeT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,10 +90,22 @@
 		68A70E1D2454B8A8001512C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68A70E1F2454B94C001512C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		68A70E202454B94C001512C8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		68CF07F7252786AF0054808B /* Fastlane Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fastlane Screenshots.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68CF07F9252786AF0054808B /* Fastlane_Screenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fastlane_Screenshots.swift; sourceTree = "<group>"; };
+		68CF07FB252786AF0054808B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68CF0806252786DB0054808B /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		68CF08262527ADB40054808B /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		68765DAA2432BE80004F84E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68CF07F4252786AF0054808B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,9 +118,13 @@
 		68765DA42432BE80004F84E9 = {
 			isa = PBXGroup;
 			children = (
-				6815794624DDEC7C0046DAE1 /* README.md */,
-				684A1D0A243765BD0060B779 /* LICENSE */,
+				68CF08262527ADB40054808B /* fastlane */,
 				68765DAF2432BE80004F84E9 /* ThreeT */,
+				68CF07F8252786AF0054808B /* Fastlane Screenshots */,
+				684957EC25277B9A0047DE47 /* Gemfile */,
+				684957E925277B990047DE47 /* LICENSE */,
+				684957EA25277B990047DE47 /* README.md */,
+				684957EB25277B990047DE47 /* Snapfile */,
 				68765DAE2432BE80004F84E9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				68765DAD2432BE80004F84E9 /* ThreeT.app */,
+				68CF07F7252786AF0054808B /* Fastlane Screenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -154,6 +200,16 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
+		68CF07F8252786AF0054808B /* Fastlane Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				68CF07F9252786AF0054808B /* Fastlane_Screenshots.swift */,
+				68CF0806252786DB0054808B /* SnapshotHelper.swift */,
+				68CF07FB252786AF0054808B /* Info.plist */,
+			);
+			path = "Fastlane Screenshots";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -174,18 +230,40 @@
 			productReference = 68765DAD2432BE80004F84E9 /* ThreeT.app */;
 			productType = "com.apple.product-type.application";
 		};
+		68CF07F6252786AF0054808B /* Fastlane Screenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 68CF07FE252786AF0054808B /* Build configuration list for PBXNativeTarget "Fastlane Screenshots" */;
+			buildPhases = (
+				68CF07F3252786AF0054808B /* Sources */,
+				68CF07F4252786AF0054808B /* Frameworks */,
+				68CF07F5252786AF0054808B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				68CF07FD252786AF0054808B /* PBXTargetDependency */,
+			);
+			name = "Fastlane Screenshots";
+			productName = "Fastlane Screenshots";
+			productReference = 68CF07F7252786AF0054808B /* Fastlane Screenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		68765DA52432BE80004F84E9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Martin Albrecht";
 				TargetAttributes = {
 					68765DAC2432BE80004F84E9 = {
 						CreatedOnToolsVersion = 11.3.1;
+					};
+					68CF07F6252786AF0054808B = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = 68765DAC2432BE80004F84E9;
 					};
 				};
 			};
@@ -204,6 +282,7 @@
 			projectRoot = "";
 			targets = (
 				68765DAC2432BE80004F84E9 /* ThreeT */,
+				68CF07F6252786AF0054808B /* Fastlane Screenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -213,13 +292,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6815794724DF03700046DAE1 /* README.md in Resources */,
 				68A70E1C2454B8A8001512C8 /* Localizable.strings in Resources */,
 				68765DBD2432BE84004F84E9 /* LaunchScreen.storyboard in Resources */,
 				68765DBA2432BE84004F84E9 /* Preview Assets.xcassets in Resources */,
-				684A1D0B243765BD0060B779 /* LICENSE in Resources */,
 				68765DB72432BE84004F84E9 /* Assets.xcassets in Resources */,
 				68924B292500318100533FD5 /* Sounds in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		68CF07F5252786AF0054808B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68CF082325279A080054808B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +334,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		68CF07F3252786AF0054808B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68F34F2D252D16C900D81726 /* StartscreenView.swift in Sources */,
+				68F34F3D252D16D600D81726 /* Localization.swift in Sources */,
+				68CF07FA252786AF0054808B /* Fastlane_Screenshots.swift in Sources */,
+				68F34F39252D16D600D81726 /* GameSettings.swift in Sources */,
+				68F34F3B252D16D600D81726 /* AppDelegate.swift in Sources */,
+				68F34F2E252D16C900D81726 /* EndscreenView.swift in Sources */,
+				68F34F35252D16D000D81726 /* Enemy.swift in Sources */,
+				68F34F30252D16C900D81726 /* GameBoardView.swift in Sources */,
+				68F34F2F252D16C900D81726 /* GameCellView.swift in Sources */,
+				68F34F34252D16D000D81726 /* GameCell.swift in Sources */,
+				68F34F36252D16D000D81726 /* Game.swift in Sources */,
+				68F34F3E252D16D600D81726 /* SceneDelegate.swift in Sources */,
+				68F34F3C252D16D600D81726 /* GameFont.swift in Sources */,
+				68F34F2C252D16C900D81726 /* SettingsView.swift in Sources */,
+				68CF0807252786DB0054808B /* SnapshotHelper.swift in Sources */,
+				68F34F31252D16C900D81726 /* ErrorView.swift in Sources */,
+				68F34F3A252D16D600D81726 /* GameGlobals.swift in Sources */,
+				68F34F2B252D16C900D81726 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		68CF07FD252786AF0054808B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 68765DAC2432BE80004F84E9 /* ThreeT */;
+			targetProxy = 68CF07FC252786AF0054808B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		68765DBB2432BE84004F84E9 /* LaunchScreen.storyboard */ = {
@@ -398,7 +516,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreeT/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
@@ -424,7 +542,7 @@
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
 				DEVELOPMENT_ASSET_PATHS = "\"ThreeT/Preview Content\"";
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
@@ -440,6 +558,46 @@
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		68CF07FF252786AF0054808B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4TM9NALPC3;
+				INFOPLIST_FILE = "Fastlane Screenshots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seriousmonkey.Fastlane-Screenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ThreeT;
+			};
+			name = Debug;
+		};
+		68CF0800252786AF0054808B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4TM9NALPC3;
+				INFOPLIST_FILE = "Fastlane Screenshots/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.seriousmonkey.Fastlane-Screenshots";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ThreeT;
 			};
 			name = Release;
 		};
@@ -460,6 +618,15 @@
 			buildConfigurations = (
 				68765DC22432BE84004F84E9 /* Debug */,
 				68765DC32432BE84004F84E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		68CF07FE252786AF0054808B /* Build configuration list for PBXNativeTarget "Fastlane Screenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				68CF07FF252786AF0054808B /* Debug */,
+				68CF0800252786AF0054808B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

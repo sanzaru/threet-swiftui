@@ -1,0 +1,8 @@
+app_identifier("de.seriousmonkey.threet") # The bundle identifier of your app
+apple_id("iwuerstchen@icloud.com") # Your Apple email address
+
+itc_team_id("120421089") # App Store Connect Team ID
+team_id("4TM9NALPC3") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

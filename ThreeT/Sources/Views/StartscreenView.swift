@@ -52,6 +52,7 @@ struct StartscreenView: View {
                         .gameButton(background: Color.darkBlue.opacity(0.9), small: false)
                 }
             )
+            .accessibility(identifier: "play-alone")
             
             Text("labelOr")
                 .font(.system(size: GameGlobals.fontSize.small.rawValue))
@@ -71,6 +72,7 @@ struct StartscreenView: View {
                         .gameButton(background: Color.darkBlue.opacity(0.9), small: false)
                 }
             )
+            .accessibility(identifier: "play-versus")
             
             /*ButtonView(label: "Demo", color: Color.red)
             .onTapGesture {

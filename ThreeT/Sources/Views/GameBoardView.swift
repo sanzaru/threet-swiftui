@@ -30,6 +30,7 @@ struct GameBoardView: View {
                                 GameCellView(
                                     cell: self.game.cells[self.game.calculateIndex(row: rowIndex, col: colIndex)]
                                 )
+                                .accessibility(identifier: "gamecell-\(rowIndex)-\(colIndex)")
                                 .frame(
                                     width: self.cellSize(geometry: geometry),
                                     height: self.cellSize(geometry: geometry)
