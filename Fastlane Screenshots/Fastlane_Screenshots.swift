@@ -28,10 +28,10 @@ class Fastlane_Screenshots: XCTestCase {
         
         //app/*@START_MENU_TOKEN@*/.buttons["play-alone"].tap()/*[[".buttons[\"Play alone\"]",".tap()",".press(forDuration: 0.4);",".buttons[\"play-alone\"]"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,1]]@END_MENU_TOKEN@*/
         app.buttons["play-versus"].tap()
-        app.otherElements["gamecell-1-1"].tap()
-        app.otherElements["gamecell-0-2"].tap()
-        app.otherElements["gamecell-2-2"].tap()
-        app.otherElements["gamecell-1-0"].tap()
+        app.buttons["gamecell-1-1"].tap()
+        app.buttons["gamecell-0-2"].tap()
+        app.buttons["gamecell-2-2"].tap()
+        app.buttons["gamecell-1-0"].tap()
         
         snapshot("02GameScreen")
     }
