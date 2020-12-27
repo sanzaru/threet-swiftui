@@ -48,7 +48,7 @@ final class Game: ObservableObject {
         state = .running
         
         if mode == .demo {
-            self.next()
+            next()
             return self
         }
         
@@ -61,7 +61,7 @@ final class Game: ObservableObject {
     /// - Returns: self
     @discardableResult
     func restart() -> some Game {
-        self.reset()
+        reset()
         state = .running
         
         onGameStart.send()
@@ -88,20 +88,20 @@ final class Game: ObservableObject {
         if state == .running {
             switch nextPlayer {
             case .player1:
-                if self.mode == .demo {
-                    let cell = enemy.getRandomFreeCell(cells: self.cells)
+                if mode == .demo {
+                    let cell = enemy.getRandomFreeCell(cells: cells)
                     
                     setCellValue(index: cell)
                     sleep(5)
                 }
                                 
                 nextPlayer = .player2
-                if self.mode == .single || self.mode == .demo {
+                if mode == .single || mode == .demo {
                     next()
                 }
                 
             case .player2:
-                if self.mode == .single || self.mode == .demo {
+                if mode == .single || mode == .demo {
                     if setCellValue(index: enemy.analyze(cells: cells)) {
                         nextPlayer = .player1
                     }
@@ -109,7 +109,7 @@ final class Game: ObservableObject {
                     nextPlayer = .player1
                 }
                 
-                if self.mode == .demo {
+                if mode == .demo {
                     next()
                 }
                 
@@ -157,7 +157,7 @@ final class Game: ObservableObject {
             
             if cell.state == .empty {
                 cell.state = nextPlayer
-                self.analyze()
+                analyze()
                 return true
             }
         }
@@ -174,7 +174,7 @@ final class Game: ObservableObject {
         if state == .running || state == .thinking {
             if index >= 0 && index < 9 && cells[index].state == .empty {
                 cells[index].state = nextPlayer
-                self.analyze()
+                analyze()
                 return true
             }
         }

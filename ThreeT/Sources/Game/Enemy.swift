@@ -134,6 +134,6 @@ final class Enemy {
             }
         }
         
-        return self.getRandomFreeCell(cells: cells)
+        return getRandomFreeCell(cells: cells)
     }
 }

@@ -23,45 +23,45 @@ struct GameBoardView: View {
     var body: some View {
         GeometryReader { geometry in
             HStack {
-                VStack(spacing: self.containerSpacing) {
-                    ForEach(0...2, id: \.self) {rowIndex in
-                        HStack(spacing: self.containerSpacing) {
+                VStack(spacing: containerSpacing) {
+                    ForEach(0..<3, id: \.self) {rowIndex in
+                        HStack(spacing: containerSpacing) {
                             ForEach(0...2, id: \.self) {colIndex in
                                 GameCellView(
-                                    cell: self.game.cells[self.game.calculateIndex(row: rowIndex, col: colIndex)]
+                                    cell: game.cells[game.calculateIndex(row: rowIndex, col: colIndex)],
+                                    action: {
+                                        if game.state != .thinking && game.setCellValue(row: rowIndex, col: colIndex) {
+                                            if settings.soundEnabled {
+                                                dropSound?.play()
+                                            }
+                                            game.next()
+                                        }
+                                        
+                                        setNotificationTimer()
+                                    }
                                 )
                                 .accessibility(identifier: "gamecell-\(rowIndex)-\(colIndex)")
                                 .frame(
-                                    width: self.cellSize(geometry: geometry),
-                                    height: self.cellSize(geometry: geometry)
+                                    width: cellSize(geometry: geometry),
+                                    height: cellSize(geometry: geometry)
                                 )
                                 .animation(.linear)
-                                .onTapGesture {
-                                    if self.game.state != .thinking && self.game.setCellValue(row: rowIndex, col: colIndex) {
-                                        if self.settings.soundEnabled && self.dropSound != nil {
-                                            self.dropSound?.play()
-                                        }
-                                        self.game.next()
-                                    }
-                                    
-                                    self.setNotificationTimer()
-                                }
                             }
                         }
                     }
                 }
-                .onAppear(perform: self.setup)
-                .onReceive(self.game.onGameStart) {
-                    self.showNotification = false
-                    self.resetNotification()
+                .onAppear(perform: setup)
+                .onReceive(game.onGameStart) {
+                    showNotification = false
+                    resetNotification()
                 }
                 
-                /*if self.game.mode == .multi {
+                /*if game.mode == .multi {
                     Text("You may pass the device to your friend, now")
                         .font(.body)
                         .foregroundColor(Color.green)
                         .padding()
-                        .opacity(self.showNotification && self.game.state == .running ? 1 : 0)
+                        .opacity(showNotification && game.state == .running ? 1 : 0)
                         .animation(.easeInOut)
                 }*/
             }
@@ -71,9 +71,9 @@ struct GameBoardView: View {
     
     private func setup() {
         if dropSound == nil {
-            if let path = Bundle.main.path(forResource: "Sounds/Drop.m4a", ofType:nil) {
+            if let path = Bundle.main.path(forResource: "Sounds/Drop.m4a", ofType: nil) {
                 do {
-                    self.dropSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                    dropSound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 } catch {
                     dump(error)
                 }
@@ -94,11 +94,11 @@ struct GameBoardView: View {
     }
     
     private func setNotificationTimer() {
-        self.resetNotification()
+        resetNotification()
         
         if game.mode == .multi  {
             timer = Timer.scheduledTimer(withTimeInterval: notificationTimeout, repeats: false ) { _ in
-                self.showNotification = self.game.state == .running
+                showNotification = game.state == .running
             }
         }
     }

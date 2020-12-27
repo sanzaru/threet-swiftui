@@ -17,7 +17,7 @@ struct SettingsView: View {
             VStack {
                 Form {
                     Section(footer: Text("labelSettingsSoundDesc")) {
-                        Toggle(isOn: self.$settings.soundEnabled, label: { Text("labelSettingsSound") })
+                        Toggle(isOn: $settings.soundEnabled, label: { Text("labelSettingsSound") })
                     }
                     
                     Section {
@@ -51,7 +51,7 @@ struct SettingsView: View {
             .navigationBarTitle("labelSettings", displayMode: .automatic)
             .navigationBarItems(
                 trailing: Button(
-                    action: { self.presentationMode.wrappedValue.dismiss() },
+                    action: { presentationMode.wrappedValue.dismiss() },
                     label: { Text("labelDone") }
                 )
             )

@@ -8,30 +8,6 @@
 
 import SwiftUI
 
-struct GameMenuButton: ViewModifier {
-    var background: Color = Color.darkBlue.opacity(0.9)
-    var small: Bool = false
-    
-    func body(content: Content) -> some View {
-        content
-            .frame(maxWidth: 120)
-            .multilineTextAlignment(.center)
-            .font(.system(size: small ? 20 : 30))
-            .padding(.horizontal, small ? 25 : 50)
-            .padding(.vertical, small ? 7 : 15)
-            .background(background)
-            .foregroundColor(Color.white)
-            .cornerRadius(10)
-            .shadow(color: background.opacity(0.5), radius: 5, x: 5, y: 5)
-    }
-}
-
-extension View {
-    func gameButton(background: Color, small: Bool) -> some View {
-        self.modifier(GameMenuButton(background: background, small: small))
-    }
-}
-
 struct StartscreenView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var game: Game?
@@ -41,18 +17,14 @@ struct StartscreenView: View {
     var body: some View {
         VStack(spacing: 15) {
             Button(
-                action: {
-                    if self.game != nil {
-                        self.game!.setGameMode(mode: .single).start()
-                    }
-                },
+                action: { game?.setGameMode(mode: .single).start() },
                 label: {
                     Text("labelPlayAlone")
                         .font(.system(size: GameGlobals.fontSize.small.rawValue))
-                        .gameButton(background: Color.darkBlue.opacity(0.9), small: false)
                 }
             )
             .accessibility(identifier: "play-alone")
+            .buttonStyle(GameMenuButtonStyle(backgroundColor: Color.darkBlue.opacity(0.9), small: false))
             
             Text("labelOr")
                 .font(.system(size: GameGlobals.fontSize.small.rawValue))
@@ -61,18 +33,14 @@ struct StartscreenView: View {
             
             
             Button(
-                action: {
-                    if self.game != nil {
-                        self.game!.setGameMode(mode: .multi).start()
-                    }
-                },
+                action: { game?.setGameMode(mode: .multi).start() },
                 label: {
                     Text("labelMultiplayer")
                         .font(.system(size: GameGlobals.fontSize.small.rawValue))
-                        .gameButton(background: Color.darkBlue.opacity(0.9), small: false)
                 }
             )
             .accessibility(identifier: "play-versus")
+            .buttonStyle(GameMenuButtonStyle(backgroundColor: Color.darkBlue.opacity(0.9), small: false))
             
             /*ButtonView(label: "Demo", color: Color.red)
             .onTapGesture {

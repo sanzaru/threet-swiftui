@@ -12,7 +12,7 @@
 		684D3E51245A03F1000BEF33 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684D3E50245A03F1000BEF33 /* Localization.swift */; };
 		68765DB12432BE80004F84E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB02432BE80004F84E9 /* AppDelegate.swift */; };
 		68765DB32432BE80004F84E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB22432BE80004F84E9 /* SceneDelegate.swift */; };
-		68765DB52432BE80004F84E9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB42432BE80004F84E9 /* ContentView.swift */; };
+		68765DB52432BE80004F84E9 /* MainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB42432BE80004F84E9 /* MainGameView.swift */; };
 		68765DB72432BE84004F84E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68765DB62432BE84004F84E9 /* Assets.xcassets */; };
 		68765DBA2432BE84004F84E9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68765DB92432BE84004F84E9 /* Preview Assets.xcassets */; };
 		68765DBD2432BE84004F84E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68765DBB2432BE84004F84E9 /* LaunchScreen.storyboard */; };
@@ -31,7 +31,9 @@
 		68CF07FA252786AF0054808B /* Fastlane_Screenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CF07F9252786AF0054808B /* Fastlane_Screenshots.swift */; };
 		68CF0807252786DB0054808B /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CF0806252786DB0054808B /* SnapshotHelper.swift */; };
 		68CF082325279A080054808B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68A70E1E2454B8A8001512C8 /* Localizable.strings */; };
-		68F34F2B252D16C900D81726 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB42432BE80004F84E9 /* ContentView.swift */; };
+		68DB785D2596A32D00AC414E /* GameMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DB785C2596A32D00AC414E /* GameMenuButtonStyle.swift */; };
+		68DB786E2597F99F00AC414E /* GameMenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DB785C2596A32D00AC414E /* GameMenuButtonStyle.swift */; };
+		68F34F2B252D16C900D81726 /* MainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DB42432BE80004F84E9 /* MainGameView.swift */; };
 		68F34F2C252D16C900D81726 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684A1D0C243768A30060B779 /* SettingsView.swift */; };
 		68F34F2D252D16C900D81726 /* StartscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD5243539D6004F84E9 /* StartscreenView.swift */; };
 		68F34F2E252D16C900D81726 /* EndscreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68765DD8243546E1004F84E9 /* EndscreenView.swift */; };
@@ -70,7 +72,7 @@
 		68765DAD2432BE80004F84E9 /* ThreeT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThreeT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68765DB02432BE80004F84E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68765DB22432BE80004F84E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		68765DB42432BE80004F84E9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		68765DB42432BE80004F84E9 /* MainGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameView.swift; sourceTree = "<group>"; };
 		68765DB62432BE84004F84E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68765DB92432BE84004F84E9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68765DBC2432BE84004F84E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 		68CF07FB252786AF0054808B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68CF0806252786DB0054808B /* SnapshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		68CF08262527ADB40054808B /* fastlane */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fastlane; sourceTree = "<group>"; };
+		68DB785C2596A32D00AC414E /* GameMenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				68765DCE2433D443004F84E9 /* Game */,
+				68DB785B2596A31400AC414E /* Styles */,
 				68765DCD2433D434004F84E9 /* Views */,
 				68765DB02432BE80004F84E9 /* AppDelegate.swift */,
 				68765DB22432BE80004F84E9 /* SceneDelegate.swift */,
@@ -179,7 +183,7 @@
 		68765DCD2433D434004F84E9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				68765DB42432BE80004F84E9 /* ContentView.swift */,
+				68765DB42432BE80004F84E9 /* MainGameView.swift */,
 				68765DC42432C92A004F84E9 /* GameCellView.swift */,
 				68765DD324340CF1004F84E9 /* ErrorView.swift */,
 				68765DD5243539D6004F84E9 /* StartscreenView.swift */,
@@ -208,6 +212,14 @@
 				68CF07FB252786AF0054808B /* Info.plist */,
 			);
 			path = "Fastlane Screenshots";
+			sourceTree = "<group>";
+		};
+		68DB785B2596A31400AC414E /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				68DB785C2596A32D00AC414E /* GameMenuButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,10 +337,11 @@
 				68765DD9243546E1004F84E9 /* EndscreenView.swift in Sources */,
 				684A1D0D243768A30060B779 /* SettingsView.swift in Sources */,
 				68A70E192452F63B001512C8 /* GameSettings.swift in Sources */,
-				68765DB52432BE80004F84E9 /* ContentView.swift in Sources */,
+				68765DB52432BE80004F84E9 /* MainGameView.swift in Sources */,
 				68765DC52432C92A004F84E9 /* GameCellView.swift in Sources */,
 				684A1D0924375B510060B779 /* GameFont.swift in Sources */,
 				68765DD6243539D6004F84E9 /* StartscreenView.swift in Sources */,
+				68DB785D2596A32D00AC414E /* GameMenuButtonStyle.swift in Sources */,
 				68765DD02433D950004F84E9 /* GameCell.swift in Sources */,
 				68765DD424340CF1004F84E9 /* ErrorView.swift in Sources */,
 			);
@@ -354,8 +367,9 @@
 				68F34F2C252D16C900D81726 /* SettingsView.swift in Sources */,
 				68CF0807252786DB0054808B /* SnapshotHelper.swift in Sources */,
 				68F34F31252D16C900D81726 /* ErrorView.swift in Sources */,
+				68DB786E2597F99F00AC414E /* GameMenuButtonStyle.swift in Sources */,
 				68F34F3A252D16D600D81726 /* GameGlobals.swift in Sources */,
-				68F34F2B252D16C900D81726 /* ContentView.swift in Sources */,
+				68F34F2B252D16C900D81726 /* MainGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
@@ -529,7 +544,10 @@
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.seriousmonkey.threet;
 				PRODUCT_NAME = ThreeT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -540,6 +558,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ThreeT/ThreeT.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 15;
@@ -555,7 +574,10 @@
 				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = de.seriousmonkey.threet;
 				PRODUCT_NAME = ThreeT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -564,6 +586,8 @@
 		68CF07FF252786AF0054808B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
 				INFOPLIST_FILE = "Fastlane Screenshots/Info.plist";
@@ -575,6 +599,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seriousmonkey.Fastlane-Screenshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ThreeT;
@@ -584,6 +610,8 @@
 		68CF0800252786AF0054808B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4TM9NALPC3;
 				INFOPLIST_FILE = "Fastlane Screenshots/Info.plist";
@@ -595,6 +623,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.seriousmonkey.Fastlane-Screenshots";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = ThreeT;

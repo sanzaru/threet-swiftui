@@ -11,42 +11,45 @@ import SwiftUI
 struct GameCellView: View {
     @ObservedObject var cell: GameCell
     
+    var action: (() -> ())
+    
     private let cornerRadius: CGFloat = 10
     private let color: [Color]  = [.darkBlue, .gameRed]
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                RoundedRectangle(cornerRadius: self.cornerRadius)
-                    .fill(self.color[0].opacity(0.01))
-                    .frame(minWidth: 30, maxWidth: 300, minHeight: 30, maxHeight: 300)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: self.cornerRadius)
-                            .stroke(self.color[0], lineWidth: 1)
-                            .frame(minWidth: 30, maxWidth: 300, minHeight: 30, maxHeight: 300)
-                    )
-                
-                
-                if self.cell.state != .empty {
-                    Text(self.cell.state == .player1 ? "X" : "0")
-                        .font(.custom(GameGlobals.gameFont, size: self.fontSize(geometry: geometry)))
-                        .foregroundColor(self.cell.state == .player1 ? self.color[0] : self.color[1])
-                        .bold()
-                        .animation(.easeInOut)
+        Button(action: action) {
+            GeometryReader { geometry in
+                ZStack {
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(color[0].opacity(0.01))
+                        .frame(minWidth: 30, maxWidth: 300, minHeight: 30, maxHeight: 300)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: cornerRadius)
+                                .stroke(color[0], lineWidth: 1)
+                                .frame(minWidth: 30, maxWidth: 300, minHeight: 30, maxHeight: 300)
+                        )
+                    
+                    if cell.state != .empty {
+                        Text(cell.state == .player1 ? "X" : "0")
+                            .font(.custom(GameGlobals.gameFont, size: geometry.size.height * 0.5))
+                            .foregroundColor(cell.state == .player1 ? color[0] : color[1])
+                            .bold()
+                            .animation(.easeInOut)
+                            //.opacity(cell.state != .empty ? 1 : 0)
+                    }
                 }
             }
         }
-    }
-    
-    private func fontSize(geometry: GeometryProxy) -> CGFloat {
-        return geometry.size.height * 0.75
+        .buttonStyle(PlainButtonStyle())
+        .contentShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }
 
 struct GameCellView_Previews: PreviewProvider {
-    @State static var s: CGFloat = 640.0
-    
     static var previews: some View {
-        GameCellView(cell: GameCell().setState(state: .player1))
+        GameCellView(cell: GameCell().setState(state: .player1)) {
+            print("Tapped")
+        }
+        .frame(width: 200, height: 200)
     }
 }

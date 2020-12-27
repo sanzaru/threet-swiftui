@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainGameView: View {
     @EnvironmentObject var settings: GameSettings
     @ObservedObject var game: Game = Game(mode: nil)
     
@@ -48,25 +48,27 @@ struct ContentView: View {
                             .padding()
                     }
                     
-                    ErrorView(message: self.game.error ?? "")
-                        .opacity(self.game.error != nil ? 1 : 0)
+                    ErrorView(message: game.error ?? "")
+                        .opacity(game.error != nil ? 1 : 0)
                 }
                 
                 ,alignment: .top
             )
                 
             .overlay(
-                Text("labelEndGame")
-                    .gameFont(color: .gameRed)
-                    .alert(isPresented: $showEndConfirm) {
-                        Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
-                            self.game.reset()
-                        }, secondaryButton: .cancel())
-                    }
-                    .onTapGesture(perform: { self.showEndConfirm.toggle() })
-                    .padding()
-                    .opacity(game.state == .running ? 1 : 0)
-                    .animation(.spring())
+                Button(action: { showEndConfirm.toggle() }) {
+                    Text("labelEndGame")
+                        .gameFont(color: .gameRed)
+                        .alert(isPresented: $showEndConfirm) {
+                            Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
+                                game.reset()
+                            }, secondaryButton: .cancel())
+                        }
+                        .padding()
+                        .opacity(game.state == .running ? 1 : 0)
+                        .animation(.spring())
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 ,alignment: .bottom
             )
@@ -75,7 +77,7 @@ struct ContentView: View {
             .overlay(
                 HStack {
                     Button(
-                        action: { self.showSettings.toggle() },
+                        action: { showSettings.toggle() },
                         label: {
                             Image(systemName: "gear")
                                 .font(.system(size: 25))
@@ -83,14 +85,14 @@ struct ContentView: View {
                         }
                     )
                 }
-                .opacity(game.state == .running || self.game.error != nil ? 0 : 1)
+                .opacity(game.state == .running || game.error != nil ? 0 : 1)
                 .padding([.horizontal, .top])
                 
                 ,alignment: .topTrailing
             )
             .sheet(
                 isPresented: $showSettings,
-                content: { SettingsView().environmentObject(self.settings) }
+                content: { SettingsView().environmentObject(settings) }
             )
             
             // Game menu
@@ -123,7 +125,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(langs, id: \.self) { id in
-            ContentView()
+            MainGameView()
                 .environmentObject(GameSettings())
                 .environment(\.locale, .init(identifier: id))
         }

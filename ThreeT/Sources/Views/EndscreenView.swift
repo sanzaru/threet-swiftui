@@ -42,22 +42,22 @@ struct EndscreenView: View {
                 
                 Spacer()
             }
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: 400)
             .padding([.top, .bottom])
             .background(Color.darkBlue.opacity(0.95))
             
             HStack {
-                Text("labelPlayAgain")
-                    .gameButton(background: .gameGreen, small: true)
-                    .onTapGesture {
-                        self.game.restart()
-                    }
+                Button(
+                    action: { game.restart() },
+                    label: { Text("labelPlayAgain") }
+                )
+                .buttonStyle(GameMenuButtonStyle(backgroundColor: .gameGreen, small: true))
                 
-                Text("labelExit")
-                    .gameButton(background: .gameRed, small: true)
-                    .onTapGesture {
-                        self.game.reset()
-                    }
+                Button(
+                    action: { game.reset() },
+                    label: { Text("labelExit") }
+                )
+                .buttonStyle(GameMenuButtonStyle(backgroundColor: .gameRed, small: true))             
             }
             .padding(.top, 20)
         }

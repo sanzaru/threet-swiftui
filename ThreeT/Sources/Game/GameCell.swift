@@ -16,7 +16,7 @@ final class GameCell: ObservableObject {
     @Published var state: GameCellState
     
     init() {
-        self.state = .empty
+        state = .empty
     }
     
     @discardableResult
@@ -27,7 +27,7 @@ final class GameCell: ObservableObject {
     
     @discardableResult
     func reset() -> GameCell {
-        self.state = .empty
+        state = .empty
         return self
     }
 }

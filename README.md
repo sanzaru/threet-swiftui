@@ -22,6 +22,13 @@ For now, there is no network multiplayer implemented.
 
 ## Changelog
 
+* v1.4
+    - Bug fixes and performance improvements 
+    - Apple Silicon M1 support
+
+* v1.3
+    - Mac Catalyst Version
+
 * v1.2
     * User interface improvements
     * Added settings view
