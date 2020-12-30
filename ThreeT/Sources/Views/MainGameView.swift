@@ -60,9 +60,13 @@ struct MainGameView: View {
                     Text("labelEndGame")
                         .gameFont(color: .gameRed)
                         .alert(isPresented: $showEndConfirm) {
-                            Alert(title: Text("labelExitConfirm"), primaryButton: .destructive(Text("Okay")) {
-                                game.reset()
-                            }, secondaryButton: .cancel())
+                            Alert(
+                                title: Text("labelExitConfirm"),
+                                primaryButton: .destructive(Text("Cancel")),
+                                secondaryButton: .default(Text("Okay")) {
+                                    game.reset()
+                                }
+                            )
                         }
                         .padding()
                         .opacity(game.state == .running ? 1 : 0)
