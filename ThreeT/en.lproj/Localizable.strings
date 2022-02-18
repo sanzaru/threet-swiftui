@@ -18,8 +18,8 @@
 "labelExit" = "Exit";
 "labelDraw" = "Draw, no winner";
 "labelWinner" = "Winner: Player %d";
-"labelWin" = "You won!";
-"labelLost" = "You lost!";
+"labelWin" = "🏆 You won!";
+"labelLost" = "😟 You lost!";
 "labelDone" = "Done";
 
 // Settings

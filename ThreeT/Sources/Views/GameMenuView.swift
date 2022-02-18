@@ -1,5 +1,5 @@
 //
-//  StartscreenView.swift
+//  GameMenuView.swift
 //  This source file is part of the ThreeT project
 //
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
@@ -8,35 +8,35 @@
 
 import SwiftUI
 
-struct StartscreenView: View {
+struct GameMenuView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var game: Game?
+    @ObservedObject var game: Game
     
     fileprivate let textColor: Color = .darkBlue
     
     var body: some View {
         VStack(spacing: 15) {
             Button(
-                action: { game?.setGameMode(mode: .single).start() },
+                action: { game.start(mode: .single) },
                 label: {
                     Text("labelPlayAlone")
-                        .font(.system(size: GameGlobals.fontSize.small.rawValue))
+                        .font(.system(size: Text.FontSize.small.rawValue))
                 }
             )
             .accessibility(identifier: "play-alone")
             .buttonStyle(GameMenuButtonStyle(backgroundColor: Color.darkBlue.opacity(0.9), small: false))
             
             Text("labelOr")
-                .font(.system(size: GameGlobals.fontSize.small.rawValue))
+                .font(.system(size: Text.FontSize.small.rawValue))
                 .bold()
                 .foregroundColor(Color.gameRed.opacity(0.8))
             
             
             Button(
-                action: { game?.setGameMode(mode: .multi).start() },
+                action: { game.start(mode: .multi) },
                 label: {
                     Text("labelMultiplayer")
-                        .font(.system(size: GameGlobals.fontSize.small.rawValue))
+                        .font(.system(size: Text.FontSize.small.rawValue))
                 }
             )
             .accessibility(identifier: "play-versus")
@@ -56,6 +56,6 @@ struct StartscreenView: View {
 
 struct StartscreenView_Previews: PreviewProvider {
     static var previews: some View {
-        StartscreenView(game: Game(mode: .single).start())
+        GameMenuView(game: Game(mode: .single).start())
     }
 }

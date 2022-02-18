@@ -7,14 +7,14 @@
 //
 
 final class Enemy {
-    private let state: GameCellState
-    private let oponnent: GameCellState
+    private let state: GameCell.State
+    private let oponnent: GameCell.State
     
     /// Initialize the enemy with a given game state and the opnonent's identifier
     /// - Parameters:
     ///   - state: Cell state describing the state
     ///   - oponnent: Identifier for the oponent
-    init(state: GameCellState, oponnent: GameCellState) {
+    init(state: GameCell.State, oponnent: GameCell.State) {
         self.state = state
         self.oponnent = oponnent
     }
@@ -23,7 +23,7 @@ final class Enemy {
     /// Calculate the index for a random free cell on the game board
     /// - Parameter cells: The cells of the game board
     /// - Returns: Index of the cell
-    func getRandomFreeCell(cells: [GameCell]) -> Int {
+    func getRandomFreeCell(cells: GameCells) -> Int {
         var found = false
         repeat {
             let rnd = Int.random(in: 0...8)
@@ -40,7 +40,7 @@ final class Enemy {
     /// If no win condition and no condition to block are found the enemy will take a random free cell on the board.
     /// - Parameter cells: The cells of the game board
     /// - Returns: Index of the cell the enemy takes
-    func analyze(cells: [GameCell]) -> Int {
+    func analyze(cells: GameCells) -> GameCell.Index {
         if cells[1].state == state && cells[2].state == state ||
             cells[3].state == state && cells[6].state == state ||
             cells[8].state == state && cells[4].state == state ||

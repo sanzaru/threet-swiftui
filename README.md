@@ -2,7 +2,7 @@
 
 ## Just a simple Tic-Tac-Toe game
 
-ThreeT or 3T is the implementation of  an old text based version I wrote some time ago (https://github.com/sanzaru/threet) in SwiftUI.
+ThreeT, or simpler 3T, is the rewrite in SwiftUI of an old text based C++ version of Tic-Tac-Toe I wrote some time ago (https://github.com/sanzaru/threet).
 The goal of this project is not to be a serious competitor. It is more a personal learning project for me to get more into SwiftUI programming.
 
 For more information, screenshots and App Store links visit the project site at: https://threet.seriousmonkey.de/
@@ -21,6 +21,11 @@ For now, there is no network multiplayer implemented.
 
 
 ## Changelog
+
+* v1.4.1
+    - Visual improvements
+    - Fixed tablet layout
+    - Bug fixes and performance improvements
 
 * v1.4
     - Bug fixes and performance improvements 

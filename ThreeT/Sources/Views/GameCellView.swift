@@ -47,7 +47,7 @@ struct GameCellView: View {
 
 struct GameCellView_Previews: PreviewProvider {
     static var previews: some View {
-        GameCellView(cell: GameCell().setState(state: .player1)) {
+        GameCellView(cell: GameCell(initialState: .player1)) {
             print("Tapped")
         }
         .frame(width: 200, height: 200)

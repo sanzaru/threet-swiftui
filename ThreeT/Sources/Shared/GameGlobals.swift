@@ -20,13 +20,6 @@ struct GameGlobals {
     static let gameFont = "Marker Felt"
     static let urlInfo = "https://threet.seriousmonkey.de"
     
-    enum fontSize: CGFloat {
-        case small = 20
-        case medium = 30
-        case big = 50
-        case large = 90
-    }
-    
     static func versionString() -> String {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? {
             return version

@@ -9,6 +9,13 @@
 import SwiftUI
 
 extension Text {
+    enum FontSize: CGFloat {
+        case small = 20
+        case medium = 30
+        case big = 50
+        case large = 90
+    }
+    
     func gameFont(fontSize: CGFloat = 30, color: Color, cornerRadius: CGFloat = 8) -> some View {
         bold()
         //.font(.system(size: fontSize))

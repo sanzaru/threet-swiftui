@@ -18,8 +18,8 @@
 "labelExit" = "Beenden";
 "labelDraw" = "Unentschieden";
 "labelWinner" = "Gewinner: Spieler %d";
-"labelWin" = "Gewonnen!";
-"labelLost" = "Verloren!";
+"labelWin" = "🏆 Gewonnen!";
+"labelLost" = "😟 Verloren!";
 "labelDone" = "Fertig";
 
 // Settings

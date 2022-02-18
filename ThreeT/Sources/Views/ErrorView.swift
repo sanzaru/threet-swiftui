@@ -13,6 +13,7 @@ struct ErrorView: View {
     
     var body: some View {
         HStack {
+            Image(systemName: "exclamationmark.triangle")
             Text("Error: \(message)")
                 .font(.body)
                 .bold()

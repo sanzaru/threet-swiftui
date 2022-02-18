@@ -11,35 +11,43 @@ import Combine
 
 
 final class Game: ObservableObject {
-    enum GameState {
+    enum State {
         case empty, running, paused, thinking, end
     }
 
-    enum GameMode {
+    enum Mode {
         case single, multi, network, demo
     }
     
     let onGameEnd = PassthroughSubject<Void, Never>()
     let onGameStart = PassthroughSubject<Void, Never>()
     
-    @Published var mode: GameMode?
-    @Published var cells: [GameCell] = []
-    @Published var nextPlayer: GameCellState = .player1
-    @Published var state: GameState = .empty
+    @Published var mode: Mode?
+    @Published var cells: GameCells = []
+    @Published var nextPlayer: GameCell.State = .player1
+    @Published var state: State = .empty
     @Published var error: String?
-    @Published var winner: GameCellState?
+    @Published var winner: GameCell.State?
     
     private let enemy: Enemy
     
     /// Initialize a game object
     /// - Parameter mode: The initial game mode for the game object
-    init(mode: GameMode?) {
+    init(mode: Mode?) {
         enemy = Enemy(state: .player2, oponnent: .player1)
         self.mode = mode
         initCells()
     }
     
     // MARK: - Game control methods
+    
+    /// Start a game
+    /// - Returns: self
+    @discardableResult
+    func start(mode: Mode) -> some Game {
+        self.mode = mode
+        return self.start()
+    }
     
     /// Start a game
     /// - Returns: self
@@ -125,7 +133,7 @@ final class Game: ObservableObject {
     /// - Parameter winner: Cell state defining the winner
     /// - Returns: self
     @discardableResult
-    func end(winner: GameCellState?) -> some Game {
+    func end(winner: GameCell.State?) -> some Game {
         if winner != nil {
             self.winner = nextPlayer == .player2 ? .player2 : .player1
         }
@@ -135,15 +143,6 @@ final class Game: ObservableObject {
     }
     
     // MARK: - General methods
-    
-    /// Set the game mode
-    /// - Parameter mode: The mode to set
-    /// - Returns: self
-    @discardableResult
-    func setGameMode(mode: GameMode) -> some Game {
-        self.mode = mode
-        return self
-    }
     
     /// Set cell value in given row and col index
     /// - Parameters:
@@ -196,7 +195,7 @@ final class Game: ObservableObject {
     
     /// Calculate if we have a winner
     /// - Returns: True on winner, false on none
-    fileprivate func hasWinner() -> Bool {
+    private func hasWinner() -> Bool {
         // Horizontal
         cells[0].state != .empty && cells[0].state == cells[1].state && cells[1].state == cells[2].state ||
         cells[3].state != .empty && cells[3].state == cells[4].state && cells[4].state == cells[5].state ||
@@ -213,7 +212,7 @@ final class Game: ObservableObject {
     }
     
     /// Analyze the game for winner
-    fileprivate func analyze() {
+    private func analyze() {
         // Check for win condition
         if hasWinner() {
             end(winner: nextPlayer)
@@ -233,16 +232,14 @@ final class Game: ObservableObject {
     }
     
     /// Reset all cell values
-    fileprivate func resetCells() {
+    private func resetCells() {
         cells.forEach { cell in
             cell.reset()
         }        
     }
     
     /// Initialize all cell values
-    fileprivate func initCells() {
-        for _ in 0...8 {
-            cells.append(GameCell())
-        }
+    private func initCells() {
+        cells = (0...8).map({ _ in GameCell() })
     }
 }

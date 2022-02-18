@@ -8,26 +8,22 @@
 
 import SwiftUI
 
-enum GameCellState {
-    case empty, player1, player2;
+final class GameCell: ObservableObject {
+    @Published var state: State
+    
+    typealias Index = Int
+    
+    enum State {
+        case empty, player1, player2;
+    }
+    
+    init(initialState: State = .empty) {
+        state = initialState
+    }
+    
+    func reset() {
+        state = .empty
+    }
 }
 
-final class GameCell: ObservableObject {
-    @Published var state: GameCellState
-    
-    init() {
-        state = .empty
-    }
-    
-    @discardableResult
-    func setState(state: GameCellState) -> GameCell {
-        self.state = state
-        return self
-    }
-    
-    @discardableResult
-    func reset() -> GameCell {
-        state = .empty
-        return self
-    }
-}
+typealias GameCells = [GameCell]

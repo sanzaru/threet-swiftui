@@ -1,5 +1,5 @@
 //
-//  EndscreenView.swift
+//  GameEndedView.swift
 //  This source file is part of the ThreeT project
 //
 //  Copyright © 2020 Martin Albrecht. All rights reserved.
@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct EndscreenView: View {
-    @State var game: Game
+struct GameEndedView: View {
+    @ObservedObject var game: Game
     
     private var playerLabel: String {
         if game.winner == nil {
@@ -31,7 +31,7 @@ struct EndscreenView: View {
                 VStack(spacing: 10) {
                     Text(playerLabel.localizedFormat())
                         .foregroundColor(.white)
-                        .font(.custom(GameGlobals.gameFont, size: GameGlobals.fontSize.medium.rawValue))
+                        .font(.custom(GameGlobals.gameFont, size: Text.FontSize.medium.rawValue))
                         .bold()
                     
                     Text("labelGameOver")
@@ -66,6 +66,6 @@ struct EndscreenView: View {
 
 struct EndscreenView_Previews: PreviewProvider {
     static var previews: some View {
-        EndscreenView(game: Game(mode: .single))
+        GameEndedView(game: Game(mode: .single))
     }
 }
