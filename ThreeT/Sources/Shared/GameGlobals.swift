@@ -8,13 +8,6 @@
 
 import SwiftUI
 
-extension Color {
-    static let darkBlue = Color("ColorBlueDark")
-    static let mediumBlue = Color("ColorBlueMedium")
-    static let gameRed = Color("ColorRed")
-    static let gameGreen = Color("ColorGreen")
-}
-
 struct GameGlobals {
     static let appTitle = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
     static let gameFont = "Marker Felt"
