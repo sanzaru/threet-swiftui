@@ -52,8 +52,7 @@ struct MainGameView: View {
                 
                 // Game board
                 GameBoardView(game: game)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .opacity(game.state == .running ? 1 : 0.6)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)                    
                 
                 // End game button
                 Button(action: { showEndConfirm.toggle() }) {
