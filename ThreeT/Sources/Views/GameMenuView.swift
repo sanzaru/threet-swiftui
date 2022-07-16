@@ -9,10 +9,7 @@
 import SwiftUI
 
 struct GameMenuView: View {
-    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var game: Game
-    
-    fileprivate let textColor: Color = .darkBlue
     
     var body: some View {
         VStack(spacing: 15) {
@@ -25,6 +22,7 @@ struct GameMenuView: View {
             )
             .accessibility(identifier: "play-alone")
             .buttonStyle(GameMenuButtonStyle(backgroundColor: Color.darkBlue.opacity(0.9), small: false))
+            .frame(maxWidth: 250)
             
             Text("labelOr")
                 .font(.system(size: Text.FontSize.small.rawValue))
@@ -41,6 +39,7 @@ struct GameMenuView: View {
             )
             .accessibility(identifier: "play-versus")
             .buttonStyle(GameMenuButtonStyle(backgroundColor: Color.darkBlue.opacity(0.9), small: false))
+            .frame(maxWidth: 250)
             
             /*ButtonView(label: "Demo", color: Color.red)
             .onTapGesture {
@@ -55,7 +54,10 @@ struct GameMenuView: View {
 }
 
 struct StartscreenView_Previews: PreviewProvider {
+    static let game = Game(mode: .single)
+
     static var previews: some View {
-        GameMenuView(game: Game(mode: .single).start())
+        GameMenuView(game: game)
+            .onAppear { game.start() }
     }
 }

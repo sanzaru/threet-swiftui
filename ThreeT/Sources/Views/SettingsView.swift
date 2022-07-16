@@ -9,59 +9,49 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var settings: GameSettings
+    @EnvironmentObject var settings: GameSettingsData
+
+    @State private var showResetDialog = false
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Form {
-                    Section(footer: Text("labelSettingsSoundDesc")) {
-                        Toggle(isOn: $settings.soundEnabled, label: { Text("labelSettingsSound") })
-                    }
-                    
-                    Section {
-                        HStack {
-                            Text("labelVersion")
-                            Spacer()
-                            Text(GameGlobals.versionString())
-                        }
-                        
-                        Button(
-                            action: {
-                                if let url = URL(string: GameGlobals.urlInfo) {
-                                    UIApplication.shared.open(url)
-                                }
-                            },
-                            label: {
-                                HStack {
-                                    Text("labelSettingsMoreInfo")
-                                    Spacer()
-                                    Image(systemName: "globe")
-                                }
-                            }
-                        )
-                    }
+        VStack {
+            Form {
+                Section(footer: Text("labelSettingsSoundDesc")) {
+                    Toggle(isOn: $settings.soundEnabled, label: { Text("labelSettingsSound") })
                 }
                 
-                Spacer()
-                
-                
+                Section {
+                    HStack {
+                        Text("labelVersion")
+                        Spacer()
+                        Text(GameGlobals.versionString)
+                    }
+                    
+                    Button(
+                        action: {
+                            if let url = URL(string: GameGlobals.urlInfo) {
+                                UIApplication.shared.open(url)
+                            }
+                        },
+                        label: {
+                            HStack {
+                                Text("labelSettingsMoreInfo")
+                                Spacer()
+                                Image(systemName: "globe")
+                            }
+                        }
+                    )
+                }
             }
-            .navigationBarTitle("labelSettings", displayMode: .automatic)
-            .navigationBarItems(
-                trailing: Button(
-                    action: { presentationMode.wrappedValue.dismiss() },
-                    label: { Text("labelDone") }
-                )
-            )
+            
+            Spacer()
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView().environmentObject(GameSettings())
+        SettingsView()
+            .environmentObject(GameSettingsData())
     }
 }
