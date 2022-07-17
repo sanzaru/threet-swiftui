@@ -28,10 +28,7 @@ struct MainGameView: View {
             if game.mode == .single {
                 return game.nextPlayer == .player1 ? "labelYourTurn" : "labelEnemyTurn"
             } else {
-                return String(
-                    format: "labelCurrentPlayer".localized(),
-                    arguments: game.nextPlayer == .player1 ? [1] : [2]
-                )
+                return String(format: "labelCurrentPlayer".localized(), game.nextPlayer == .player1 ? 1 : 2)
             }
         }
         

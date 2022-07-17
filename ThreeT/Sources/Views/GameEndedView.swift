@@ -17,7 +17,7 @@ struct GameEndedView: View {
         }
         
         if game.mode == .multi {
-            return String(format: "labelWinner".localized(), game.winner == .player1 ? [1] : [2])
+            return String(format: "labelWinner".localized(), game.winner == .player1 ? 1 : 2)
         }
         
         return game.winner == .player1 ? "labelWin" : "labelLost"
