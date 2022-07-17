@@ -13,11 +13,7 @@ struct GameGlobals {
     static let gameFont = "Marker Felt"
     static let urlInfo = "https://threet.seriousmonkey.de"
     
-    static func versionString() -> String {
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? {
-            return version
-        }
-        
-        return "unknown"
+    static var versionString: String {
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String? ?? "unknown"
     }
 }

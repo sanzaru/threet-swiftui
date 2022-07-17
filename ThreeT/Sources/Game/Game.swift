@@ -9,7 +9,6 @@
 import SwiftUI
 import Combine
 
-
 final class Game: ObservableObject {
     enum State {
         case empty, running, paused, thinking, end
@@ -30,6 +29,23 @@ final class Game: ObservableObject {
     @Published var winner: GameCell.State?
     
     private let enemy: Enemy
+
+    /// Flag if we have a winner
+    private var hasWinner: Bool {
+        // Horizontal
+        cells[0].state != .empty && cells[0].state == cells[1].state && cells[1].state == cells[2].state ||
+        cells[3].state != .empty && cells[3].state == cells[4].state && cells[4].state == cells[5].state ||
+        cells[6].state != .empty && cells[6].state == cells[7].state && cells[7].state == cells[8].state ||
+
+        // Vertical
+        cells[0].state != .empty && cells[0].state == cells[3].state && cells[3].state == cells[6].state ||
+        cells[1].state != .empty && cells[1].state == cells[4].state && cells[4].state == cells[7].state ||
+        cells[2].state != .empty && cells[2].state == cells[5].state && cells[5].state == cells[8].state ||
+
+        // Diagonal
+        cells[0].state != .empty && cells[0].state == cells[4].state && cells[4].state == cells[8].state ||
+        cells[2].state != .empty && cells[2].state == cells[4].state && cells[4].state == cells[6].state
+    }
     
     /// Initialize a game object
     /// - Parameter mode: The initial game mode for the game object
@@ -38,76 +54,68 @@ final class Game: ObservableObject {
         self.mode = mode
         initCells()
     }
-    
-    // MARK: - Game control methods
-    
+}
+
+// MARK: - Start the game
+extension Game {
     /// Start a game
-    /// - Returns: self
-    @discardableResult
-    func start(mode: Mode) -> some Game {
+    func start(mode: Mode) {
         self.mode = mode
-        return self.start()
+        start()
     }
-    
+
     /// Start a game
-    /// - Returns: self
-    @discardableResult
-    func start() -> some Game {
+    func start() {
         state = .running
-        
+
         if mode == .demo {
             next()
-            return self
+            return
         }
-        
+
         onGameStart.send()
-        
-        return self
     }
-    
+}
+
+// MARK: - Restart / Reset
+extension Game {
     /// Restart the game
-    /// - Returns: self
-    @discardableResult
-    func restart() -> some Game {
+    func restart() {
         reset()
         state = .running
-        
+
         onGameStart.send()
-        
-        return self
     }
-    
+
     /// Reset the game
-    /// - Returns: self
-    @discardableResult
-    func reset() -> some Game {
+    func reset() {
         resetCells()
         error = nil
         nextPlayer = .player1
         state = .empty
         winner = nil
-        return self
     }
-    
+}
+
+// MARK: - Game control
+extension Game {
     /// Calculate next step in game
-    /// - Returns: self
-    @discardableResult
-    func next() -> some Game {
+    func next() {
         if state == .running {
             switch nextPlayer {
             case .player1:
                 if mode == .demo {
                     let cell = enemy.getRandomFreeCell(cells: cells)
-                    
+
                     setCellValue(index: cell)
                     sleep(5)
                 }
-                                
+
                 nextPlayer = .player2
                 if mode == .single || mode == .demo {
                     next()
                 }
-                
+
             case .player2:
                 if mode == .single || mode == .demo {
                     if setCellValue(index: enemy.analyze(cells: cells)) {
@@ -116,34 +124,31 @@ final class Game: ObservableObject {
                 } else {
                     nextPlayer = .player1
                 }
-                
+
                 if mode == .demo {
                     next()
                 }
-                
+
             default:
                 break
             }
         }
-        
-        return self
     }
-    
+
     /// End the game
     /// - Parameter winner: Cell state defining the winner
-    /// - Returns: self
-    @discardableResult
-    func end(winner: GameCell.State?) -> some Game {
-        if winner != nil {
-            self.winner = nextPlayer == .player2 ? .player2 : .player1
+    func end(winner: GameCell.State?) {
+        if let winner = winner {
+            self.winner = winner == .player2 ? .player2 : .player1
         }
+        
         state = .end
         onGameEnd.send()
-        return self
     }
-    
-    // MARK: - General methods
-    
+}
+
+// MARK: - Cell operations
+extension Game {
     /// Set cell value in given row and col index
     /// - Parameters:
     ///   - row: The row index
@@ -153,17 +158,17 @@ final class Game: ObservableObject {
     func setCellValue(row: Int, col: Int) -> Bool {
         if state == .running || state == .thinking {
             let cell = cells[calculateIndex(row: row, col: col)]
-            
+
             if cell.state == .empty {
                 cell.state = nextPlayer
                 analyze()
                 return true
             }
         }
-        
+
         return false
     }
-    
+
     /// Set the value inside the cell of the given cell index
     /// The index must be a number in the range of 0...9
     /// - Parameter index: The index number of the field to set
@@ -177,10 +182,10 @@ final class Game: ObservableObject {
                 return true
             }
         }
-        
+
         return false
     }
-    
+
     /// Calculate the field index for given row and col. The returned number will be in range 0...9
     /// - Parameters:
     ///   - row: The row index
@@ -190,54 +195,31 @@ final class Game: ObservableObject {
         let index = (row * 3) + col
         return index <= 8 ? index : 0
     }
-    
-    // MARK: - Private methods
-    
-    /// Calculate if we have a winner
-    /// - Returns: True on winner, false on none
-    private func hasWinner() -> Bool {
-        // Horizontal
-        cells[0].state != .empty && cells[0].state == cells[1].state && cells[1].state == cells[2].state ||
-        cells[3].state != .empty && cells[3].state == cells[4].state && cells[4].state == cells[5].state ||
-        cells[6].state != .empty && cells[6].state == cells[7].state && cells[7].state == cells[8].state ||
-            
-        // Vertical
-        cells[0].state != .empty && cells[0].state == cells[3].state && cells[3].state == cells[6].state ||
-        cells[1].state != .empty && cells[1].state == cells[4].state && cells[4].state == cells[7].state ||
-        cells[2].state != .empty && cells[2].state == cells[5].state && cells[5].state == cells[8].state ||
-            
-        // Diagonal
-        cells[0].state != .empty && cells[0].state == cells[4].state && cells[4].state == cells[8].state ||
-        cells[2].state != .empty && cells[2].state == cells[4].state && cells[4].state == cells[6].state
-    }
-    
+}
+
+// MARK: - Private methods
+extension Game {
     /// Analyze the game for winner
     private func analyze() {
         // Check for win condition
-        if hasWinner() {
+        if hasWinner {
             end(winner: nextPlayer)
             return
         }
-        
+
         // Check for a draw
-        var check = 0
-        cells.forEach { cell in
-            if cell.state != .empty {
-                check += 1
-            }
-        }
-        if check == cells.count {
+        if cells.filter({ $0.state != .empty }).count == cells.count {
             end(winner: nil)
         }
     }
-    
+
     /// Reset all cell values
     private func resetCells() {
         cells.forEach { cell in
             cell.reset()
-        }        
+        }
     }
-    
+
     /// Initialize all cell values
     private func initCells() {
         cells = (0...8).map({ _ in GameCell() })
