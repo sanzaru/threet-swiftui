@@ -1,0 +1,42 @@
+{
+  "Outputs" : {
+    "Taken" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "TakenProbability" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "Inputs" : {
+    "Field 7" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 6" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 5" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 4" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 3" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 2" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 1" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 0" : {
+      "MLFeatureShortDescription" : "--"
+    },
+    "Field 8" : {
+      "MLFeatureShortDescription" : "--"
+    }
+  },
+  "TrainingInputs" : {
+
+  }
+}
