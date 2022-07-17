@@ -105,7 +105,11 @@ struct GameBoardView: View {
 }
 
 struct GameBoardView_Previews: PreviewProvider {
+    static let game = Game(mode: .single)
+
     static var previews: some View {
-        GameBoardView(game: Game(mode: .single).start())
+        GameBoardView(game: game)
+            .onAppear { game.start() }
+            .preferredColorScheme(.dark)
     }
 }
