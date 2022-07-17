@@ -21,6 +21,8 @@
 "labelWin" = "🏆 You won!";
 "labelLost" = "😟 You lost!";
 "labelDone" = "Done";
+"labelCancel" = "Cancel";
+"labelReset" = "Reset";
 
 // Settings
 "labelSettings" = "Settings";
@@ -28,3 +30,14 @@
 "labelSettingsSoundDesc" = "Enable or disable in game sounds.";
 "labelVersion" = "Version";
 "labelSettingsMoreInfo" = "More information about the game";
+
+// Statistics
+"labelStatsTitle" = "Statistics";
+"labelStatsWins" = "Wins";
+"labelStatsDraws" = "Draws";
+"labelStatsLosses" = "Losses";
+"labelResetStats" = "Reset statistics";
+"labelAlertMessage" = "This action will reset all your game statistics and cannot be reverted. Are you sure you want to reset the statistics?";
+"labelStatsOverviewTitle" = "Overall statistics";
+"labelStatsWdlRatesLabel" = "W / D / L rates";
+"labelStatsWdlRatioLabel" = "W / D / L ratio";

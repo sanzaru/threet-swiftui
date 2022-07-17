@@ -21,6 +21,8 @@
 "labelWin" = "🏆 Gewonnen!";
 "labelLost" = "😟 Verloren!";
 "labelDone" = "Fertig";
+"labelCancel" = "Abbrechen";
+"labelReset" = "Zurücksetzen";
 
 // Settings
 "labelSettings" = "Einstellungen";
@@ -28,3 +30,14 @@
 "labelSettingsSoundDesc" = "Ein- und Ausschalten von in-game Sounds.";
 "labelVersion" = "Version";
 "labelSettingsMoreInfo" = "Mehr Informationen über das Spiel";
+
+// Statistiken
+"labelStatsTitle" = "Statistiken";
+"labelStatsWins" = "Gewonnen";
+"labelStatsDraws" = "Unentschieden";
+"labelStatsLosses" = "Verloren";
+"labelResetStats" = "Statistiken zurücksetzen";
+"labelAlertMessage" = "Diese Aktion setzt alle Spielstatistiken zurück. Dieser Vorgang kann nicht rückgängig gemacht werden. Spielstatistiken wirklich zurücksetzen?";
+"labelStatsOverviewTitle" = "Übersicht Statistik";
+"labelStatsWdlRatesLabel" = "G / U / V Rate";
+"labelStatsWdlRatioLabel" = "G / U / V Ratio";

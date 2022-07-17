@@ -11,9 +11,17 @@ import SwiftUI
 struct MainGameView: View {
     @EnvironmentObject var settings: GameSettingsData
     @EnvironmentObject var game: Game
+    @EnvironmentObject var gameStats: GameStatisticsData
     
-    @State private var showEndConfirm: Bool = false
-    @State private var showSettings: Bool = false
+    @State private var showEndConfirm = false
+    @State private var activeSheet: SheetContent?
+    
+    private enum SheetContent: Int, Identifiable {
+        case statistics = 0, settings
+        var id: Int {
+            return self.rawValue
+        }
+    }
     
     private var nextPlayerLabel: String {
         if game.state == .running {
@@ -75,11 +83,20 @@ struct MainGameView: View {
                 )
             }
                             
-            // Settings menu and sheet
+            // Buttons for statistics and settings
             .overlay(
                 HStack {
+//                    Button(
+//                        action: { activeSheet = .statistics },
+//                        label: {
+//                            Image(systemName: "chart.bar.xaxis")
+//                                .font(.system(size: 25))
+//                                .foregroundColor(.darkBlue)
+//                        }
+//                    )
+                    
                     Button(
-                        action: { showSettings.toggle() },
+                        action: { activeSheet = .settings },
                         label: {
                             Image(systemName: "gear")
                                 .font(.system(size: 25))
@@ -91,10 +108,6 @@ struct MainGameView: View {
                 .padding([.horizontal, .top])
                 
                 ,alignment: .topTrailing
-            )
-            .sheet(
-                isPresented: $showSettings,
-                content: { SettingsView().environmentObject(settings) }
             )
             
             // Game menu
@@ -118,6 +131,42 @@ struct MainGameView: View {
             }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .onReceive(game.onGameEnd, perform: setGameStatistics)
+        
+        // Sheet content
+        .sheet(item: $activeSheet) { sheet in
+            NavigationView {
+                Group {
+                    switch sheet {
+                    case .statistics:
+                        GameStatisticsView()
+                            .environmentObject(gameStats)
+                            .navigationBarTitle("labelStatsTitle", displayMode: .automatic)
+                        
+                    case .settings:
+                        SettingsView()
+                            .environmentObject(settings)
+                            .navigationBarTitle("labelSettings", displayMode: .automatic)
+                    }
+                }
+                .navigationBarItems(trailing: Button("labelDone".localized()) { activeSheet = nil })
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
+    }
+    
+    private func setGameStatistics() {
+        var scoreType: GameStatisticsData.ScoreType
+        
+        if game.winner == nil {
+            scoreType = .draw
+        } else if game.winner == .player1 {
+            scoreType = .win
+        } else {
+            scoreType = .loss
+        }
+        
+        gameStats.set(for: scoreType)
     }
 }
 
@@ -128,8 +177,17 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ForEach(langs, id: \.self) { id in
             MainGameView()
-                .environmentObject(GameSettings())
+                .environmentObject(GameSettingsData())
+                .environmentObject(Game(mode: .single))
+                .environmentObject(GameStatisticsData())
                 .environment(\.locale, .init(identifier: id))
+
+            MainGameView()
+                .environmentObject(GameSettingsData())
+                .environmentObject(Game(mode: .single))
+                .environmentObject(GameStatisticsData())
+                .environment(\.locale, .init(identifier: id))
+                .preferredColorScheme(.dark)
         }
     }
 }
