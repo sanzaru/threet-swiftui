@@ -8,12 +8,12 @@
 
 import SwiftUI
 
-final class GameCell: ObservableObject {
-    @Published var state: State
+final class GameCell {
+    var state: State
     
     typealias Index = Int
     
-    enum State {
+    enum State: Double {
         case empty, player1, player2;
     }
     

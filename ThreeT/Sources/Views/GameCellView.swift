@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct GameCellView: View {
-    @ObservedObject var cell: GameCell
+    var cellState: GameCell.State
     
     var action: (() -> ())
     
@@ -29,13 +29,12 @@ struct GameCellView: View {
                                 .frame(minWidth: 30, maxWidth: 300, minHeight: 30, maxHeight: 300)
                         )
                     
-                    if cell.state != .empty {
-                        Text(cell.state == .player1 ? "X" : "0")
+                    if cellState != .empty {
+                        Text(cellState == .player1 ? "X" : "0")
                             .font(.custom(GameGlobals.gameFont, size: geometry.size.height * 0.5))
-                            .foregroundColor(cell.state == .player1 ? color[0] : color[1])
+                            .foregroundColor(cellState == .player1 ? color[0] : color[1])
                             .bold()
                             .animation(.easeInOut)
-                            //.opacity(cell.state != .empty ? 1 : 0)
                     }
                 }
             }
@@ -47,9 +46,15 @@ struct GameCellView: View {
 
 struct GameCellView_Previews: PreviewProvider {
     static var previews: some View {
-        GameCellView(cell: GameCell(initialState: .player1)) {
+        GameCellView(cellState: .player1) {
             print("Tapped")
         }
         .frame(width: 200, height: 200)
+
+        GameCellView(cellState: .player1) {
+            print("Tapped")
+        }
+        .frame(width: 200, height: 200)
+        .preferredColorScheme(.dark)
     }
 }

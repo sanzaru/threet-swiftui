@@ -10,7 +10,7 @@ import SwiftUI
 import AVFoundation
 
 struct GameBoardView: View {
-    @EnvironmentObject var settings: GameSettings
+    @EnvironmentObject var settings: GameSettingsData
     @ObservedObject var game: Game
     
     @State private var showNotification: Bool = false
@@ -28,7 +28,7 @@ struct GameBoardView: View {
                         HStack(spacing: containerSpacing) {
                             ForEach(0...2, id: \.self) {colIndex in
                                 GameCellView(
-                                    cell: game.cells[game.calculateIndex(row: rowIndex, col: colIndex)],
+                                    cellState: game.cells[game.calculateIndex(row: rowIndex, col: colIndex)].state,
                                     action: {
                                         if game.state != .thinking && game.setCellValue(row: rowIndex, col: colIndex) {
                                             if settings.soundEnabled {
