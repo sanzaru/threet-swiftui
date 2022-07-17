@@ -22,6 +22,9 @@ For now, there is no network multiplayer implemented.
 
 ## Changelog
 
+* v1.5
+    - Implemented machine learning model to replace old enemy logic
+
 * v1.4.1
     - Visual improvements
     - Fixed tablet layout
