@@ -17,10 +17,10 @@ struct GameEndedView: View {
         }
         
         if game.mode == .multi {
-            return String(format: "labelWinner".localizedFormat(), arguments: self.game.winner == .player1 ? [1] : [2])
+            return String(format: "labelWinner".localized(), game.winner == .player1 ? [1] : [2])
         }
         
-        return "\(self.game.winner == .player1 ? "labelWin" : "labelLost")"
+        return game.winner == .player1 ? "labelWin" : "labelLost"
     }
     
     var body: some View {
@@ -29,7 +29,7 @@ struct GameEndedView: View {
                 Spacer()
                 
                 VStack(spacing: 10) {
-                    Text(playerLabel.localizedFormat())
+                    Text(playerLabel.localized())
                         .foregroundColor(.white)
                         .font(.custom(GameGlobals.gameFont, size: Text.FontSize.medium.rawValue))
                         .bold()
@@ -42,7 +42,6 @@ struct GameEndedView: View {
                 
                 Spacer()
             }
-            .frame(maxWidth: 400)
             .padding([.top, .bottom])
             .background(Color.darkBlue.opacity(0.95))
             
@@ -61,6 +60,7 @@ struct GameEndedView: View {
             }
             .padding(.top, 20)
         }
+        .frame(maxWidth: 400)
     }
 }
 

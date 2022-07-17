@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct MainGameView: View {
-    @EnvironmentObject var settings: GameSettings
+    @EnvironmentObject var settings: GameSettingsData
     @EnvironmentObject var game: Game
     
     @State private var showEndConfirm: Bool = false
@@ -21,7 +21,7 @@ struct MainGameView: View {
                 return game.nextPlayer == .player1 ? "labelYourTurn" : "labelEnemyTurn"
             } else {
                 return String(
-                    format: "labelCurrentPlayer".localizedFormat(),
+                    format: "labelCurrentPlayer".localized(),
                     arguments: game.nextPlayer == .player1 ? [1] : [2]
                 )
             }
@@ -31,7 +31,7 @@ struct MainGameView: View {
     }
     
     private var viewTitle: String {
-        game.state == .running ? nextPlayerLabel.localizedFormat() : " "
+        game.state == .running ? nextPlayerLabel.localized() : " "
     }
     
     var body: some View {
@@ -58,18 +58,20 @@ struct MainGameView: View {
                 Button(action: { showEndConfirm.toggle() }) {
                     Text("labelEndGame")
                         .gameFont(color: .gameRed)
-                        .padding([.horizontal, .bottom])
-                        .opacity(game.state == .running ? 1 : 0)
                         .animation(.spring())
                 }
                 .buttonStyle(PlainButtonStyle())
+                .opacity(game.state == .running ? 1 : 0)
+                .padding([.horizontal, .bottom])
             }
             .blur(radius: game.state == .empty ? 3 : 0)
+            
+            // Cancel game dialog
             .alert(isPresented: $showEndConfirm) {
                 Alert(
                     title: Text("labelExitConfirm"),
-                    primaryButton: .destructive(Text("Cancel")),
-                    secondaryButton: .default(Text("Okay")) { game.reset() }
+                    primaryButton: .default(Text("Okay")) { game.reset() },
+                    secondaryButton: .cancel(Text("Cancel"))
                 )
             }
                             
