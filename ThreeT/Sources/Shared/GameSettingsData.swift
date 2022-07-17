@@ -9,9 +9,11 @@
 import SwiftUI
 
 class GameSettingsData: ObservableObject {
-    @Published var soundEnabled: Bool = UserDefaults.standard.object(forKey: GameGlobals.settingsSoundStoreKey) != nil ? UserDefaults.standard.bool(forKey: GameGlobals.settingsSoundStoreKey) : false {
+    @Published var soundEnabled = UserDefaults.standard.bool(forKey: GameSettingsData.settingsSoundStoreKey) {
         didSet {
-            UserDefaults.standard.set(soundEnabled, forKey: GameGlobals.settingsSoundStoreKey)
+            UserDefaults.standard.set(soundEnabled, forKey: GameSettingsData.settingsSoundStoreKey)
         }
     }
+
+    private static let settingsSoundStoreKey = "soundEnabled"
 }
