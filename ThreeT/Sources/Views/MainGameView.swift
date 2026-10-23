@@ -132,7 +132,7 @@ struct MainGameView: View {
         
         // Sheet content
         .sheet(item: $activeSheet) { sheet in
-            NavigationView {
+            NavigationStack {
                 Group {
                     switch sheet {
                     case .statistics:
@@ -148,7 +148,6 @@ struct MainGameView: View {
                 }
                 .navigationBarItems(trailing: Button("labelDone".localized()) { activeSheet = nil })
             }
-            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
     
